@@ -1,0 +1,115 @@
+﻿<UI:MetroWindow x:Class="ControleDeAulas.View.MainWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                xmlns:UI="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                WindowStartupLocation="CenterScreen"
+                Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+
+        <Ribbon x:Name="ribbon" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                Background="WhiteSmoke" Loaded="Ribbon_Loaded">            
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu Visibility="Collapsed"/>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab x:Name="tabCadastro" Header="Cadastro">
+                <RibbonGroup x:Name="grpHomeCad" Header="Home">
+                    <RibbonButton x:Name="btnHomeCad"
+                                  Command="{Binding HomeCommand}"
+                                  LargeImageSource="{DynamicResource homeIcon}"
+                                  SmallImageSource="{DynamicResource homeIcon}"/>
+                </RibbonGroup>
+                <RibbonGroup x:Name="grpCadastro" Header="Cadastro">
+                    <RibbonButton x:Name="btnProf" Label="Professores"
+                                  Command="{Binding LoadRibbonCommand}"
+                                  LargeImageSource="{DynamicResource controller_add}"
+                                  SmallImageSource="{DynamicResource controller_add}"/>
+                    <RibbonButton x:Name="btnMat" Label="Matérias"
+                                  Command="{Binding LoadRibbonCommand}"
+                                  LargeImageSource="{DynamicResource controller_add}"
+                                  SmallImageSource="{DynamicResource controller_add}"/>
+                    <RibbonButton x:Name="btnTurmas" Label="Turmas"
+                                  Command="{Binding LoadRibbonCommand}"
+                                  LargeImageSource="{DynamicResource controller_add}"
+                                  SmallImageSource="{DynamicResource controller_add}"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab x:Name="tabAdm" Header="Administração">
+                <RibbonGroup x:Name="grpHomeAdm" Header="Home">
+                    <RibbonButton x:Name="btnHomeAdm"
+                                  Command="{Binding HomeCommand}"
+                                  LargeImageSource="{DynamicResource homeIcon}"
+                                  SmallImageSource="{DynamicResource homeIcon}"/>
+                </RibbonGroup>
+                <RibbonGroup x:Name="grpSistema" Header="Sistema">
+                    <RibbonButton x:Name="btnLoadRibbon" Label="Carregar Ribbons"
+                                  Command="{Binding LoadRibbonCommand}"
+                                  LargeImageSource="{DynamicResource controller_add}"
+                                  SmallImageSource="{DynamicResource controller_add}"/>
+                    <RibbonButton x:Name="btnRibbon" Label="Ribbons"
+                                  Command="{Binding RibbonCommand}"
+                                  LargeImageSource="{DynamicResource controller}"
+                                  SmallImageSource="{DynamicResource controller}"/>
+
+                </RibbonGroup>
+                <RibbonGroup x:Name="grpControleDeAcessos" Header="Controle de Acesso">
+                    <RibbonButton x:Name="btnGrupos" Label="Grupos"
+                                  Command="{Binding GroupCommand}"
+                                  LargeImageSource="{DynamicResource userGroupIcon}"
+                                  SmallImageSource="{DynamicResource userGroupIcon}"/>
+                    <RibbonButton x:Name="btnUsuarios" Label="Usuários"
+                                  Command="{Binding UserCommand}"
+                                  LargeImageSource="{DynamicResource userIcon}"
+                                  SmallImageSource="{DynamicResource userIcon}"/>
+                    <RibbonButton x:Name="btnAcessos" Label="Acessos"
+                                  Command="{Binding AcessosCommand}"
+                                  LargeImageSource="{DynamicResource drawer_open}"
+                                  SmallImageSource="{DynamicResource drawer_open}"/>
+                </RibbonGroup>
+                <RibbonGroup x:Name="grpLogAdm" Header="Logs">
+                    <RibbonButton x:Name="btnLogAdm" 
+                                  Label="Operações"
+                                  Command="{Binding LogCommand}"
+                                  LargeImageSource="{DynamicResource page_lightning}"
+                                  SmallImageSource="{DynamicResource page_lightning}"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab x:Name="tabOperacoesCadastro" Header="Operações Cadastro">
+                <RibbonGroup x:Name="grpOpCadastroHome" Header="Home">
+                    <RibbonButton x:Name="btnOpCadastroHome"
+                                  Command="{Binding HomeCommand}"
+                                  LargeImageSource="{DynamicResource homeIcon}"
+                                  SmallImageSource="{DynamicResource homeIcon}"/>
+                </RibbonGroup>
+                <RibbonGroup x:Name="grpOpCadatroOperacoes" Header="Operações">
+                    <RibbonButton x:Name="btnOpCadastroNovo" Label="Novo"
+                                      Command="{Binding NovoCommand}"
+                                      LargeImageSource="{DynamicResource add}"
+                                      SmallImageSource="{DynamicResource add}"/>
+                    <RibbonButton x:Name="btnOpCadastroDelete" Label="Excluir"
+                                      Command="{Binding DeleteCommand}"
+                                      LargeImageSource="{DynamicResource delete}"
+                                      SmallImageSource="{DynamicResource delete}"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        <Label Content="Hello world" Grid.Row="1" Grid.Column="1"/>
+    </Grid>
+</UI:MetroWindow>
