@@ -7,8 +7,8 @@
     <ProjectGuid>{D747D44A-36E6-4887-8FDC-218C499CFF9C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Movvimento.Helpers</RootNamespace>
-    <AssemblyName>Movvimento.Helpers</AssemblyName>
+    <RootNamespace>ControleDeAulas.Helpers</RootNamespace>
+    <AssemblyName>ControleDeAulas.Helpers</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

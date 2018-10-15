@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C347963A-1EF3-4436-A2A3-3AFD3C9F5FFD}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Movvimento.View</RootNamespace>
-    <AssemblyName>Movvimento.View</AssemblyName>
+    <RootNamespace>ControleDeAulas.View</RootNamespace>
+    <AssemblyName>ControleDeAulas.View</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -72,6 +72,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\ImageResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -101,7 +105,33 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Resource Include="Resources\Images\add.png" />
+    <Resource Include="Resources\Images\clock_select_remain.png" />
+    <Resource Include="Resources\Images\controller.png" />
+    <Resource Include="Resources\Images\controller_add.png" />
+    <Resource Include="Resources\Images\dashboard.png" />
+    <Resource Include="Resources\Images\delete.png" />
+    <Resource Include="Resources\Images\drawer_open.png" />
+    <Resource Include="Resources\Images\draw_clone.png" />
+    <Resource Include="Resources\Images\exportExcel.png" />
+    <Resource Include="Resources\Images\folders.png" />
+    <Resource Include="Resources\Images\folder_vertical_open.png" />
+    <Resource Include="Resources\Images\gear_in_16.png" />
+    <Resource Include="Resources\Images\homeIcon.png" />
+    <Resource Include="Resources\Images\inbox_download.png" />
+    <Resource Include="Resources\Images\inbox_table.png" />
+    <Resource Include="Resources\Images\inbox_upload.png" />
+    <Resource Include="Resources\Images\internet_explorer.png" />
+    <Resource Include="Resources\Images\lightning.png" />
+    <Resource Include="Resources\Images\logoBradesco.png" />
+    <Resource Include="Resources\Images\menu_item.png" />
+    <Resource Include="Resources\Images\page_lightning.png" />
+    <Resource Include="Resources\Images\table.png" />
+    <Resource Include="Resources\Images\table_16.png" />
+    <Resource Include="Resources\Images\table_excel.png" />
+    <Resource Include="Resources\Images\user.png" />
+    <Resource Include="Resources\Images\userGroupIcon.png" />
+    <Resource Include="Resources\Images\userIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

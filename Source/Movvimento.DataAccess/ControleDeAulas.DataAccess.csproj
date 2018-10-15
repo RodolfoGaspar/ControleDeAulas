@@ -7,8 +7,8 @@
     <ProjectGuid>{BF4FFDE4-BCD9-4598-ADE4-C9CB30563BD2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Movvimento.DataAccess</RootNamespace>
-    <AssemblyName>Movvimento.DataAccess</AssemblyName>
+    <RootNamespace>ControleDeAulas.DataAccess</RootNamespace>
+    <AssemblyName>ControleDeAulas.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -7,8 +7,8 @@
     <ProjectGuid>{24A8F411-2807-42DD-969D-CE6BD2D10E6F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Movvimento.Model</RootNamespace>
-    <AssemblyName>Movvimento.Model</AssemblyName>
+    <RootNamespace>ControleDeAulas.Model</RootNamespace>
+    <AssemblyName>ControleDeAulas.Model</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
