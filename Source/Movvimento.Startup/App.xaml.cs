@@ -1,19 +1,14 @@
-﻿using ControleDeAulas.View;
+﻿using ControleDeAulas.Helpers;
+using ControleDeAulas.View;
 using ControleDeAulas.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ControleDeAulas.Startup
 {
-    /// <summary>	
-    /// Interação lógica para App.xaml
-    /// </summary>
-    public partial class App : Application
+	/// <summary>	
+	/// Interação lógica para App.xaml
+	/// </summary>
+	public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -24,6 +19,11 @@ namespace ControleDeAulas.Startup
             window.Title = "Sistema de Controle de Aulas";
 
             window.Visibility = Visibility.Visible;
-        }
+
+			Navigator.NavigationService = window.MyConteudo.NavigationService;
+			Navigator.WizardNavigationService = window.MyConteudoWizard.NavigationService;
+
+			Navigator.NavigationService.Navigate(new View.HomeView() { DataContext = new HomeViewModel() });
+		}
     }
 }

@@ -4,7 +4,7 @@
                 xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                 xmlns:UI="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                 WindowStartupLocation="CenterScreen"
-                Height="450" Width="800">
+                Height="650" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -39,16 +39,30 @@
                 <RibbonGroup x:Name="grpCadastro" Header="Cadastro">
                     <RibbonButton x:Name="btnProf" Label="Professores"
                                   Command="{Binding LoadRibbonCommand}"
-                                  LargeImageSource="{DynamicResource controller_add}"
-                                  SmallImageSource="{DynamicResource controller_add}"/>
+                                  LargeImageSource="{DynamicResource ssl_tls_manager}"
+                                  SmallImageSource="{DynamicResource ssl_tls_manager}"/>
                     <RibbonButton x:Name="btnMat" Label="Matérias"
                                   Command="{Binding LoadRibbonCommand}"
-                                  LargeImageSource="{DynamicResource controller_add}"
-                                  SmallImageSource="{DynamicResource controller_add}"/>
+                                  LargeImageSource="{DynamicResource blackboard_drawing}"
+                                  SmallImageSource="{DynamicResource blackboard_drawing}"/>
                     <RibbonButton x:Name="btnTurmas" Label="Turmas"
                                   Command="{Binding LoadRibbonCommand}"
-                                  LargeImageSource="{DynamicResource controller_add}"
-                                  SmallImageSource="{DynamicResource controller_add}"/>
+                                  LargeImageSource="{DynamicResource users_5}"
+                                  SmallImageSource="{DynamicResource users_5}"/>
+                </RibbonGroup>
+                <RibbonGroup x:Name="grpControle" Header="Controles">
+                    <RibbonButton x:Name="btnDiario" Label="Boletim Diário"
+                                  Command="{Binding LoadRibbonCommand}"
+                                  LargeImageSource="{DynamicResource calendar_add}"
+                                  SmallImageSource="{DynamicResource calendar_add}"/>
+                    <RibbonButton x:Name="btnSaldo" Label="Saldo de Aulas"
+                                  Command="{Binding LoadRibbonCommand}"
+                                  LargeImageSource="{DynamicResource function}"
+                                  SmallImageSource="{DynamicResource function}"/>
+                    <RibbonButton x:Name="btnExtrato" Label="Extrato"
+                                  Command="{Binding LoadRibbonCommand}"
+                                  LargeImageSource="{DynamicResource edit_mathematics}"
+                                  SmallImageSource="{DynamicResource edit_mathematics}"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab x:Name="tabAdm" Header="Administração">
@@ -110,6 +124,126 @@
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
-        <Label Content="Hello world" Grid.Row="1" Grid.Column="1"/>
+        
+        <Frame x:Name="Conteudo" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3"
+               NavigationUIVisibility="Hidden" Panel.ZIndex="0" Background="White" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Navigated">
+                    <i:InvokeCommandAction Command="{Binding FrameUpdatedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Frame>
+        
+        <Rectangle x:Name="Shadow" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" 
+                   Fill="Black" Opacity="0.50" Panel.ZIndex="{Binding zIndex}"/>
+        <Grid x:Name="gridWizard" Grid.Column="2" Grid.Row="2"
+              Panel.ZIndex="{Binding zIndex}"
+              Style="{StaticResource GridStyle}">
+
+            <Grid.BitmapEffect>
+                <DropShadowBitmapEffect Color="Black"  />
+            </Grid.BitmapEffect>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36"/>
+                <RowDefinition Height="200*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="{Binding wizColumnCancel}"/>
+                <ColumnDefinition Width="{Binding wizRightColumnCancel}"/>
+                <ColumnDefinition Width="{Binding wizColumnBack}"/>
+                <ColumnDefinition Width="{Binding wizRightColumnBack}"/>
+                <ColumnDefinition Width="{Binding wizColumnNext}"/>
+                <ColumnDefinition Width="{Binding wizRightColumnNext}"/>
+                <ColumnDefinition Width="{Binding wizColumnFinish}"/>
+                <ColumnDefinition Width="{Binding wizRightColumnFinish}"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="HeaderWizard" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" 
+                       Style="{StaticResource TextBlockWizardStyle}"
+                       Text="{Binding headerWizard}"/>
+            <Frame x:Name="ConteudoWizard" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="8" 
+                   NavigationUIVisibility="Hidden" Background="White" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Navigated">
+                        <i:InvokeCommandAction Command="{Binding FrameUpdatedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Frame>
+
+            <Button x:Name="btnCancel" Grid.Row="3" Grid.Column="2"
+                    Content="Cancelar" 
+                    Command="{Binding wizCancelCommand}"
+                    Style="{DynamicResource SquareButtonStyle}"/>
+            <Button x:Name="btnBack" Grid.Row="3" Grid.Column="4"
+                    Content="Voltar" 
+                    Command="{Binding wizBackCommand}"
+                    Style="{DynamicResource SquareButtonStyle}"/>
+            <Button x:Name="btnNext" Grid.Row="3" Grid.Column="6"
+                    Content="Próximo" 
+                    Command="{Binding wixNextCommand}"
+                    Style="{DynamicResource SquareButtonStyle}"/>
+            <Button x:Name="btnFinish" Grid.Row="3" Grid.Column="8"
+                    Content="Concluir" 
+                    Command="{Binding wizFinishCommand}"
+                    Style="{DynamicResource SquareButtonStyle}"/>
+        </Grid>
+
+        <StatusBar x:Name="AppStatusBar" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5"
+                   Background="#0e214f" BorderBrush="Gray" BorderThickness="0.5"
+                   Panel.ZIndex="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="350*"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="250*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <StatusBarItem Width="20" Grid.Column="0" 
+                               ToolTip="Grupo Empresarial" HorizontalAlignment="Right">
+                    <StatusBarItem.Background>
+                        <ImageBrush ImageSource="{DynamicResource gear_in_16}" Stretch="None" AlignmentX="Left"/>
+                    </StatusBarItem.Background>
+                </StatusBarItem>
+                <StatusBarItem x:Name="TextStatus" Width="200" HorizontalContentAlignment="Left" Grid.Column="1" ToolTip="Grupo Empresarial"/>
+                <StatusBarItem x:Name="ImgUsuario" Width="20" Grid.Column="2" 
+                               ToolTip="Usuário" HorizontalAlignment="Right">
+                    <StatusBarItem.Background>
+                        <ImageBrush ImageSource="{DynamicResource user}" Stretch="None" AlignmentX="Left"/>
+                    </StatusBarItem.Background>
+                </StatusBarItem>
+                <StatusBarItem x:Name="TextUsuario" Width="200" HorizontalContentAlignment="Left" Grid.Column="3" ToolTip="Usuário"/>
+                <StatusBarItem x:Name="ImgProcesso" Width="20" Grid.Column="4" 
+                               ToolTip="Processo" HorizontalAlignment="Right">
+                    <StatusBarItem.Background>
+                        <ImageBrush ImageSource="{DynamicResource lightning}" Stretch="None" AlignmentX="Left"/>
+                    </StatusBarItem.Background>
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="5" ToolTip="Andamento do Processo"
+                               HorizontalAlignment="Right">
+                    <ProgressBar x:Name="Progresso" Width="150" Height="20" HorizontalAlignment="Left" Foreground="red"/>
+                </StatusBarItem>
+                <StatusBarItem x:Name="TextProcesso" HorizontalContentAlignment="Left" Grid.Column="6" ToolTip="Processo"/>
+                <StatusBarItem x:Name="ImgCount" Width="20" Grid.Column="8" 
+                               ToolTip="Contagem" HorizontalAlignment="Right">
+                    <StatusBarItem.Background>
+                        <ImageBrush ImageSource="{DynamicResource table_16}" Stretch="None" AlignmentX="Left"/>
+                    </StatusBarItem.Background>
+                </StatusBarItem>
+                <StatusBarItem x:Name="TextCount" HorizontalContentAlignment="Right" Grid.Column="9" ToolTip="Contagem"/>
+            </Grid>
+        </StatusBar>
     </Grid>
 </UI:MetroWindow>

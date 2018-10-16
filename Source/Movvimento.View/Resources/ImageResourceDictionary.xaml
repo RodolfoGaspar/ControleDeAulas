@@ -27,4 +27,15 @@
     <BitmapImage x:Key="menu_item" UriSource="Images/menu_item.png"/>
     <BitmapImage x:Key="clock_select_remain" UriSource="Images/clock_select_remain.png"/>
     <BitmapImage x:Key="draw_clone" UriSource="Images/draw_clone.png"/>
+
+    <BitmapImage x:Key="blackboard_drawing" UriSource="Images/blackboard_drawing.png"/>
+    <BitmapImage x:Key="ssl_tls_manager" UriSource="Images/ssl_tls_manager.png"/>
+    <BitmapImage x:Key="users_5" UriSource="Images/users_5.png"/>
+    <BitmapImage x:Key="calendar_add" UriSource="Images/calendar_add.png"/>
+    <BitmapImage x:Key="function" UriSource="Images/function.png"/>
+    <BitmapImage x:Key="edit_mathematics" UriSource="Images/edit_mathematics.png"/>
+    <BitmapImage x:Key="sala_de_aula" UriSource="Images/sala_de_aula.jpg"/>
+    <BitmapImage x:Key="Logo_Univesp" UriSource="Images/Logo_Univesp.png"/>
 </ResourceDictionary>
+    
+    

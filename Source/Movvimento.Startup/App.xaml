@@ -6,7 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!--<ResourceDictionary Source="pack://application:,,,/ControleDeAulas.View;component/Resources/ImplicitStylesResourceDictionary.xaml" />-->
-                <!--<ResourceDictionary Source="pack://application:,,,/ControleDeAulas.View;Resources/StylesResourceDictionary.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/ControleDeAulas.View;component/Resources/StylesResourceDictionary.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/ControleDeAulas.View;component/Resources/ImageResourceDictionary.xaml"/>
                 <!--<ResourceDictionary Source="pack://application:,,,/ControleDeAulas.View;Resources/RibbonTemplateResourceDictionary.xaml"/>-->
                 <!--<ResourceDictionary Source="pack://application:,,,/ControleDeAulas.View;Resources/CanvasResourceDictionary.xaml"/>-->

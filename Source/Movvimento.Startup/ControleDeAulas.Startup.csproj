@@ -99,6 +99,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Movvimento.Helpers\ControleDeAulas.Helpers.csproj">
+      <Project>{d747d44a-36e6-4887-8fdc-218c499cff9c}</Project>
+      <Name>ControleDeAulas.Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Movvimento.ViewModel\ControleDeAulas.ViewModel.csproj">
       <Project>{0fcead4e-a8e3-4e8c-a8e6-b6bbb6574b5b}</Project>
       <Name>ControleDeAulas.ViewModel</Name>
