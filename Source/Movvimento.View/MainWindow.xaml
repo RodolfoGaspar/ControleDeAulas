@@ -48,13 +48,13 @@
                     <RibbonButton x:Name="btnTurmas" Label="Turmas"
                                   Command="{Binding LoadRibbonCommand}"
                                   LargeImageSource="{DynamicResource users_5}"
-                                  SmallImageSource="{DynamicResource users_5}"/>
-                </RibbonGroup>
-                <RibbonGroup x:Name="grpControle" Header="Controles">
+                                  SmallImageSource="{DynamicResource users_5}"/>                    
                     <RibbonButton x:Name="btnDiario" Label="Boletim Diário"
                                   Command="{Binding LoadRibbonCommand}"
                                   LargeImageSource="{DynamicResource calendar_add}"
                                   SmallImageSource="{DynamicResource calendar_add}"/>
+                </RibbonGroup>
+                <RibbonGroup x:Name="grpRelatorio" Header="Relatórios">
                     <RibbonButton x:Name="btnSaldo" Label="Saldo de Aulas"
                                   Command="{Binding LoadRibbonCommand}"
                                   LargeImageSource="{DynamicResource function}"
@@ -195,7 +195,7 @@
         </Grid>
 
         <StatusBar x:Name="AppStatusBar" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5"
-                   Background="#0e214f" BorderBrush="Gray" BorderThickness="0.5"
+                   Background="#FF2472BF" BorderBrush="Gray" BorderThickness="0.5"
                    Panel.ZIndex="1">
             <Grid>
                 <Grid.ColumnDefinitions>
