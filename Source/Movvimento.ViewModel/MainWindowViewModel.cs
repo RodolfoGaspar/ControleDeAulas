@@ -1,4 +1,5 @@
 ﻿using ControleDeAulas.Helpers;
+using ControleDeAulas.View;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -182,6 +183,8 @@ namespace ControleDeAulas.ViewModel
 		}
 		#endregion
 
+		#region RelayCommands
+		#region Wizard
 		/// <summary>
 		/// Command do botão Cancel do Wizard.
 		/// </summary>
@@ -198,11 +201,26 @@ namespace ControleDeAulas.ViewModel
 		/// Command do botão Concluir do Wizard.
 		/// </summary>
 		public RelayCommand wizFinishCommand { get; set; }
+		#endregion
 
+		public RelayCommand ListProfCommand { get; set; }
+		#endregion
+
+		#region Constructors
 		public MainWindowViewModel()
         {
 			SetProperties();
-        }
+
+			ListProfCommand = new RelayCommand(ListProf);
+
+		}
+		#endregion
+
+		#region Functions
+		private void ListProf(object parameters)
+		{
+			Navigator.NavigationService.Navigate(new ProfessoresView() { DataContext = new ProfessoresViewModel() });
+		}
 
 		/// <summary>
 		/// Manipula as propriedades do Wizard e atualiza a Ribbon.
@@ -244,7 +262,6 @@ namespace ControleDeAulas.ViewModel
 			//AppRibbon.SetVisibility("tabOperacoesCadastro", Visibility.Collapsed);
 			//if (isEnabled) AppRibbon.SetEnable("AllRibbonElements");
 		}
-
-
+		#endregion
 	}
 }

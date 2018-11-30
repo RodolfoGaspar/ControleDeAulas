@@ -60,6 +60,10 @@
       <Project>{d747d44a-36e6-4887-8fdc-218c499cff9c}</Project>
       <Name>ControleDeAulas.Helpers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Movvimento.View\ControleDeAulas.View.csproj">
+      <Project>{C347963A-1EF3-4436-A2A3-3AFD3C9F5FFD}</Project>
+      <Name>ControleDeAulas.View</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

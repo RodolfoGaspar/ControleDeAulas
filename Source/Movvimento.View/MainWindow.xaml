@@ -38,7 +38,7 @@
                 </RibbonGroup>
                 <RibbonGroup x:Name="grpCadastro" Header="Cadastro">
                     <RibbonButton x:Name="btnProf" Label="Professores"
-                                  Command="{Binding LoadRibbonCommand}"
+                                  Command="{Binding ListProfCommand}"
                                   LargeImageSource="{DynamicResource ssl_tls_manager}"
                                   SmallImageSource="{DynamicResource ssl_tls_manager}"/>
                     <RibbonButton x:Name="btnMat" Label="Matérias"
