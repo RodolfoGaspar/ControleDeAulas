@@ -205,6 +205,7 @@ namespace ControleDeAulas.ViewModel
 
 		public RelayCommand ListProfCommand { get; set; }
 		public RelayCommand ListMateriasCommand { get; set; }
+		public RelayCommand ListTurmasCommand { get; set; }
 		#endregion
 
 		#region Constructors
@@ -214,10 +215,8 @@ namespace ControleDeAulas.ViewModel
 
 			ListProfCommand = new RelayCommand(ListProf);
 			ListMateriasCommand = new RelayCommand(ListMaterias);
-
+			ListTurmasCommand = new RelayCommand(ListTurmas);
 		}
-
-		
 		#endregion
 
 		#region Functions
@@ -229,6 +228,11 @@ namespace ControleDeAulas.ViewModel
 		private void ListMaterias(object parameter)
 		{
 			Navigator.NavigationService.Navigate(new MateriasView() { DataContext = new MateriasViewModel() });
+		}
+
+		private void ListTurmas(object parameters)
+		{
+			Navigator.NavigationService.Navigate(new TurmasView() { DataContext = new TurmasViewModel() });
 		}
 
 		/// <summary>

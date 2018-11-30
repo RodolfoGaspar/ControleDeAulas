@@ -46,7 +46,7 @@
                                   LargeImageSource="{DynamicResource blackboard_drawing}"
                                   SmallImageSource="{DynamicResource blackboard_drawing}"/>
                     <RibbonButton x:Name="btnTurmas" Label="Turmas"
-                                  Command="{Binding LoadRibbonCommand}"
+                                  Command="{Binding ListTurmasCommand}"
                                   LargeImageSource="{DynamicResource users_5}"
                                   SmallImageSource="{DynamicResource users_5}"/>                    
                     <RibbonButton x:Name="btnDiario" Label="Boletim Diário"
