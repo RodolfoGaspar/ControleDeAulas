@@ -64,7 +64,35 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="HomeView.xaml">
+    <Compile Include="BoletimDiarioView.xaml.cs">
+      <DependentUpon>BoletimDiarioView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExtratoAulasView.xaml.cs">
+      <DependentUpon>ExtratoAulasView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaldoAulasView.xaml.cs">
+      <DependentUpon>SaldoAulasView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TurmasView.xaml.cs">
+      <DependentUpon>TurmasView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="BoletimDiarioView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExtratoAulasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MateriasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfessoresView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="root\HomeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -72,7 +100,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="HomeView.xaml.cs">
+    <Compile Include="MateriasView.xaml.cs">
+      <DependentUpon>MateriasView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfessoresView.xaml.cs">
+      <DependentUpon>ProfessoresView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="root\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -86,6 +120,14 @@
     <Page Include="Resources\ImageResourceDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SaldoAulasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TurmasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

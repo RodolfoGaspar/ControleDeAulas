@@ -45,9 +45,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseViewModel.cs" />
-    <Compile Include="HomeViewModel.cs" />
+    <Compile Include="BoletimDiarioViewModel.cs" />
+    <Compile Include="ExtratoAulasViewModel.cs" />
+    <Compile Include="MateriasViewModel.cs" />
+    <Compile Include="ProfessoresViewModel.cs" />
+    <Compile Include="root\HomeViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaldoAulasViewModel.cs" />
+    <Compile Include="TurmasViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Movvimento.Helpers\ControleDeAulas.Helpers.csproj">
