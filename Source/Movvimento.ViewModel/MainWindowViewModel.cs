@@ -204,6 +204,7 @@ namespace ControleDeAulas.ViewModel
 		#endregion
 
 		public RelayCommand ListProfCommand { get; set; }
+		public RelayCommand ListMateriasCommand { get; set; }
 		#endregion
 
 		#region Constructors
@@ -212,14 +213,22 @@ namespace ControleDeAulas.ViewModel
 			SetProperties();
 
 			ListProfCommand = new RelayCommand(ListProf);
+			ListMateriasCommand = new RelayCommand(ListMaterias);
 
 		}
+
+		
 		#endregion
 
 		#region Functions
 		private void ListProf(object parameters)
 		{
 			Navigator.NavigationService.Navigate(new ProfessoresView() { DataContext = new ProfessoresViewModel() });
+		}
+
+		private void ListMaterias(object parameter)
+		{
+			Navigator.NavigationService.Navigate(new MateriasView() { DataContext = new MateriasViewModel() });
 		}
 
 		/// <summary>

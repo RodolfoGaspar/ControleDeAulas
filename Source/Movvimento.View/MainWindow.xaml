@@ -42,7 +42,7 @@
                                   LargeImageSource="{DynamicResource ssl_tls_manager}"
                                   SmallImageSource="{DynamicResource ssl_tls_manager}"/>
                     <RibbonButton x:Name="btnMat" Label="Matérias"
-                                  Command="{Binding LoadRibbonCommand}"
+                                  Command="{Binding ListMateriasCommand}"
                                   LargeImageSource="{DynamicResource blackboard_drawing}"
                                   SmallImageSource="{DynamicResource blackboard_drawing}"/>
                     <RibbonButton x:Name="btnTurmas" Label="Turmas"
