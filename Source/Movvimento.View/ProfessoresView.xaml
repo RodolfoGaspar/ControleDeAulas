@@ -22,7 +22,7 @@
                    Text="Professores"/>
 
         <DataGrid x:Name="DataGridProfessores" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"
-                  ItemsSource="{Binding Collection}"
+                  ItemsSource="{Binding Professores}"
                   BorderBrush="Black" BorderThickness="1"
                   AutoGenerateColumns="False" IsReadOnly="True"
                   CanUserResizeColumns="True" CanUserAddRows="False" 

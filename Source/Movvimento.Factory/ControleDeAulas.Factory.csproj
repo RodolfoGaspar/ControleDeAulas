@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Movvimento.DataAccess\ControleDeAulas.DataAccess.csproj">
+      <Project>{bf4ffde4-bcd9-4598-ade4-c9cb30563bd2}</Project>
+      <Name>ControleDeAulas.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Movvimento.Model\ControleDeAulas.Model.csproj">
+      <Project>{24a8f411-2807-42dd-969d-ce6bd2d10e6f}</Project>
+      <Name>ControleDeAulas.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,5 +22,14 @@ namespace ControleDeAulas.Startup.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CDA_DB.db")]
+        public string BaseDados {
+            get {
+                return ((string)(this["BaseDados"]));
+            }
+        }
     }
 }

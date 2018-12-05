@@ -1,6 +1,7 @@
 ﻿using ControleDeAulas.Helpers;
 using ControleDeAulas.View;
 using ControleDeAulas.ViewModel;
+using System;
 using System.Windows;
 
 namespace ControleDeAulas.Startup
@@ -19,6 +20,9 @@ namespace ControleDeAulas.Startup
             window.Title = "Sistema de Controle de Aulas";
 
             window.Visibility = Visibility.Visible;
+
+			AppProperties.AppPath = Environment.CurrentDirectory;
+			AppProperties.BdPath = ControleDeAulas.Startup.Properties.Settings.Default.BaseDados;
 
 			Navigator.NavigationService = window.MyConteudo.NavigationService;
 			Navigator.WizardNavigationService = window.MyConteudoWizard.NavigationService;

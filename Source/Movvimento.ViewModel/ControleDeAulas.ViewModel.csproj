@@ -56,14 +56,25 @@
     <Compile Include="TurmasViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Movvimento.Factory\ControleDeAulas.Factory.csproj">
+      <Project>{a377c249-8d75-4046-acd5-f505c2e03b96}</Project>
+      <Name>ControleDeAulas.Factory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Movvimento.Helpers\ControleDeAulas.Helpers.csproj">
       <Project>{d747d44a-36e6-4887-8fdc-218c499cff9c}</Project>
       <Name>ControleDeAulas.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Movvimento.Model\ControleDeAulas.Model.csproj">
+      <Project>{24a8f411-2807-42dd-969d-ce6bd2d10e6f}</Project>
+      <Name>ControleDeAulas.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Movvimento.View\ControleDeAulas.View.csproj">
       <Project>{C347963A-1EF3-4436-A2A3-3AFD3C9F5FFD}</Project>
       <Name>ControleDeAulas.View</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
