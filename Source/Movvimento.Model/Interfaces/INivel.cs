@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControleDeAulas.ViewModel
+namespace ControleDeAulas.Model.Interfaces
 {
-	class MateriasViewModel
+	public interface INivel
 	{
+		List<Nivel> Get();
 	}
 }

@@ -67,16 +67,35 @@
     <Compile Include="BoletimDiarioView.xaml.cs">
       <DependentUpon>BoletimDiarioView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CategoriasView.xaml.cs">
+      <DependentUpon>CategoriasView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExtratoAulasView.xaml.cs">
       <DependentUpon>ExtratoAulasView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FaixasView.xaml.cs">
+      <DependentUpon>FaixasView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NiveisView.xaml.cs">
+      <DependentUpon>NiveisView.xaml</DependentUpon>
     </Compile>
     <Compile Include="SaldoAulasView.xaml.cs">
       <DependentUpon>SaldoAulasView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SituacoesView.xaml.cs">
+      <DependentUpon>SituacoesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TurmasView.xaml.cs">
       <DependentUpon>TurmasView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Wizard\WizCadProfessorView.xaml.cs">
+      <DependentUpon>WizCadProfessorView.xaml</DependentUpon>
+    </Compile>
     <Page Include="BoletimDiarioView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CategoriasView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -84,7 +103,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MateriasView.xaml">
+    <Page Include="FaixasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisciplinasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NiveisView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -100,8 +127,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="MateriasView.xaml.cs">
-      <DependentUpon>MateriasView.xaml</DependentUpon>
+    <Compile Include="DisciplinasView.xaml.cs">
+      <DependentUpon>DisciplinasView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProfessoresView.xaml.cs">
       <DependentUpon>ProfessoresView.xaml</DependentUpon>
@@ -125,7 +152,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SituacoesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TurmasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wizard\WizCadProfessorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,6 +246,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Logo_Univesp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\sort_alphabel_column.png" />
+    <Resource Include="Resources\Images\sort_number_column.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\categories.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\legend.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

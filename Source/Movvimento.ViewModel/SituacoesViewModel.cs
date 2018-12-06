@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace ControleDeAulas.ViewModel
 {
-	public class TurmasViewModel
+	public class SituacoesViewModel
 	{
-		public ObservableCollection<Turma> Turmas { get; private set; }
-		public Turma Turm { get; private set; }
+		public ObservableCollection<Situacao> Situacoes { get; private set; }
+		public Situacao Sit { get; private set; }
 
-		public TurmasViewModel()
+		public SituacoesViewModel()
 		{
-			Turm = new AppFactory().NewTurma();
+			Sit = new AppFactory().NewSituacao();
 
 			AppRibbon.SetFocus("tabOperacoesCadastro");
 
@@ -26,7 +26,7 @@ namespace ControleDeAulas.ViewModel
 
 		private void FillCollection()
 		{
-			Turmas = new ObservableCollection<Turma>(Turm.Get());
+			Situacoes = new ObservableCollection<Situacao>(Sit.Get());
 		}
 	}
 }

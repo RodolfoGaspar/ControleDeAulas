@@ -6,11 +6,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace ControleDeAulas.ViewModel
 {
-    public class MainWindowViewModel : BaseViewModel
-    {
+	public class MainWindowViewModel : BaseViewModel
+	{
 		#region Properties
 		private string _zIndex;
 		/// <summary>
@@ -204,36 +206,142 @@ namespace ControleDeAulas.ViewModel
 		#endregion
 
 		public RelayCommand ListProfCommand { get; set; }
+		public RelayCommand ListFaixaCommand { get; set; }
+		public RelayCommand ListNivelCommand { get; set; }
+		public RelayCommand ListSituacaoCommand { get; set; }
+		public RelayCommand ListCategoriaCommand { get; set; }
 		public RelayCommand ListMateriasCommand { get; set; }
 		public RelayCommand ListTurmasCommand { get; set; }
+
+		public RelayCommand NovoCommand { get; set; }
+		public RelayCommand DeleteCommand { get; private set; }
+		public RelayCommand ClosedCommand { get; }
 		#endregion
 
 		#region Constructors
 		public MainWindowViewModel()
-        {
+		{
 			SetProperties();
 
+			AppRibbon.SetVisibility("tabOperacoesCadastro", Visibility.Collapsed);
+
 			ListProfCommand = new RelayCommand(ListProf);
+			ListFaixaCommand = new RelayCommand(ListFaixa);
+			ListNivelCommand = new RelayCommand(ListNivel);
+			ListSituacaoCommand = new RelayCommand(ListSituacao);
+			ListCategoriaCommand = new RelayCommand(ListCategoria);
 			ListMateriasCommand = new RelayCommand(ListMaterias);
 			ListTurmasCommand = new RelayCommand(ListTurmas);
+
+			NovoCommand = new RelayCommand(Add);
+			DeleteCommand = new RelayCommand(Delete);
+			//ClosedCommand = new RelayCommand(EncerraApp);
+
+			wizFinishCommand = new RelayCommand(Save);
+			wizCancelCommand = new RelayCommand(Cancel);
+			wizBackCommand = new RelayCommand(Back);
+			wixNextCommand = new RelayCommand(Next);
 		}
 		#endregion
 
 		#region Functions
-		private void ListProf(object parameters)
+		private void ListProf(object parameters) => Navigator.NavigationService.Navigate(new ProfessoresView() { DataContext = new ProfessoresViewModel() });
+
+		private void ListFaixa(object parameters) => Navigator.NavigationService.Navigate(new FaixasView() { DataContext = new FaixasViewModel() });
+
+		private void ListNivel(object parameters) => Navigator.NavigationService.Navigate(new NiveisView() { DataContext = new NiveisViewModel() });
+				
+		private void ListSituacao(object parameters) => Navigator.NavigationService.Navigate(new SituacoesView() { DataContext = new SituacoesViewModel() });
+
+		private void ListCategoria(object parameters) => Navigator.NavigationService.Navigate(new CategoriasView() { DataContext = new CategoriasViewModel() });
+
+		private void ListMaterias(object parameter) => Navigator.NavigationService.Navigate(new MateriasView() { DataContext = new DisciplinasViewModel() });
+
+		private void ListTurmas(object parameters) => Navigator.NavigationService.Navigate(new TurmasView() { DataContext = new TurmasViewModel() });
+
+		#region Functions Wizard
+		/// <summary>
+		/// Navega à próxima page do Wizard.
+		/// </summary>
+		/// <param name="parameter"></param>
+		private void Next(object parameter)
 		{
-			Navigator.NavigationService.Navigate(new ProfessoresView() { DataContext = new ProfessoresViewModel() });
+			Mouse.OverrideCursor = Cursors.Wait;
+			switch (Navigator.WizardNavigationService.Content.ToString())
+			{
+				default: break;
+			}
+			Mouse.OverrideCursor = Cursors.Arrow;
+		}
+		/// <summary>
+		/// Navega à page anterior do Wizard.
+		/// </summary>
+		/// <param name="parameter"></param>
+		private void Back(object parameter)
+		{
+			Mouse.OverrideCursor = Cursors.Wait;
+			if (Navigator.WizardNavigationService.CanGoBack)
+			{
+				Navigator.WizardNavigationService.GoBack();
+				switch (Navigator.WizardNavigationService.Content.ToString())
+				{
+					default: break;
+				}
+			}
+			Mouse.OverrideCursor = Cursors.Arrow;
+		}
+		/// <summary>
+		/// Cancela e desfaz as operações do Wizard.
+		/// </summary>
+		/// <param name="parameter"></param>
+		private void Cancel(object parameter)
+		{
+			Mouse.OverrideCursor = Cursors.Wait;
+			SetProperties();
+			Mouse.OverrideCursor = Cursors.Arrow;
+		}
+		/// <summary>
+		/// Salva as operações do Wizard
+		/// </summary>
+		/// <param name="parameter"></param>
+		private void Save(object parameter)
+		{
+			Mouse.OverrideCursor = Cursors.Wait;
+			string wizard = Navigator.WizardNavigationService.Content.ToString();
+			switch (wizard)
+			{
+				default: break;
+			}
+			Mouse.OverrideCursor = Cursors.Arrow;
+			//AppStatus.StopAppStatus();
+		}
+		#endregion
+
+		#region Ribbon Cadastro
+		/// <summary>
+		/// Exclui o registro selecionado.
+		/// </summary>
+		/// <param name="parameter"></param>
+		private void Delete(object parameter)
+		{
+			GetCurrentPageDataContext().Delete();
 		}
 
-		private void ListMaterias(object parameter)
+		/// <summary>
+		/// Inicia o Wizard para inclusão de novo registro.
+		/// </summary>
+		/// <param name="parameter"></param>
+		private void Add(object parameter)
 		{
-			Navigator.NavigationService.Navigate(new MateriasView() { DataContext = new MateriasViewModel() });
+			SetProperties(_zIndex: 2, _wizColumnCancel: 60, _wizColumnNext: 60);
+			switch (Navigator.NavigationService.Content.ToString())
+			{
+				case ("ControleDeAulas.View.ProfessoresView"):
+					Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadProfessorView() { DataContext = new Wizard.WizCadProfessorViewModel() });
+					break;
+			}
 		}
-
-		private void ListTurmas(object parameters)
-		{
-			Navigator.NavigationService.Navigate(new TurmasView() { DataContext = new TurmasViewModel() });
-		}
+		#endregion
 
 		/// <summary>
 		/// Manipula as propriedades do Wizard e atualiza a Ribbon.

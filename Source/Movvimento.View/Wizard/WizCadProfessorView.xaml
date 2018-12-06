@@ -1,0 +1,43 @@
+﻿<Page x:Class="ControleDeAulas.View.Wizard.WizCadProfessorView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="WizCadUserView">
+    <Grid Style="{StaticResource GridStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Nome *" Grid.Row="1" Grid.Column="1"
+               Style="{StaticResource LabelStyle}"/>
+        <TextBox x:Name="txtNome" Grid.Row="1" Grid.Column="2" 
+                 Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
+                 FontSize="12" VerticalContentAlignment="Center"
+                 Text="{Binding Prof.Nome, Mode=TwoWay, 
+                                UpdateSourceTrigger=PropertyChanged}" >
+        </TextBox>
+
+        <Label Content="RG *" Grid.Row="3" Grid.Column="1"
+               Style="{StaticResource LabelStyle}"/>
+        <TextBox x:Name="txtRG" Grid.Row="3" Grid.Column="2" 
+                 Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
+                 FontSize="12" VerticalContentAlignment="Center"
+                 Text="{Binding Prof.RG, Mode=TwoWay, 
+                                UpdateSourceTrigger=PropertyChanged}"/>
+
+        
+    </Grid>
+</Page>

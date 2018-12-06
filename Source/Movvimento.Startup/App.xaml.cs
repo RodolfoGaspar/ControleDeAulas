@@ -21,6 +21,8 @@ namespace ControleDeAulas.Startup
 
             window.Visibility = Visibility.Visible;
 
+			AppRibbon.Ribbon = window.MyRibbon;
+
 			AppProperties.AppPath = Environment.CurrentDirectory;
 			AppProperties.BdPath = ControleDeAulas.Startup.Properties.Settings.Default.BaseDados;
 

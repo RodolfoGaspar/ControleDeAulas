@@ -36,6 +36,7 @@ namespace ControleDeAulas.DataAccess
 			}
 			catch (Exception ex)
 			{ throw ex; }
+			finally { conn.Close(); }
 		}
 
 		private void Fill(List<Model.Professor> list, SQLiteDataAdapter da)
@@ -52,16 +53,16 @@ namespace ControleDeAulas.DataAccess
 		{
 			foreach (DataRow dr in dt.Rows)
 			{
-				var p = new Model.Professor(this);
+				var p = new Model.Professor(this, new Faixa(), new Nivel(), new Situacao(), new Categoria(), new Disciplina());
 
 				p.Id = Convert.ToInt32(dr["id"]);
 				p.Nome = Convert.ToString(dr["Nome"]);
 				p.RG = Convert.ToString(dr["RG"]);
-				//p.Fn = Convert.ToString(dr["Fn"]);
+				p.IdFaixa = Convert.ToInt32(dr["IdFaixa"]);
+				p.IdNivel = Convert.ToInt32(dr["IdNivel"]);
+				p.IdSituacao = Convert.ToInt32(dr["IdSituacao"]);
 				p.IdCategoria = Convert.ToInt32(dr["IdCategoria"]);
-				p.IdStatus = Convert.ToInt32(dr["IdStatus"]);
-				p.IdDisciplina = Convert.ToInt32(dr["IdDisciplina"]);
-
+				
 				list.Add(p);
 			}
 		}

@@ -29,11 +29,10 @@
                   CanUserDeleteRows="False" SelectionMode="Extended">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-                <DataGridTextColumn Header="RG" Binding="{Binding Rg}"/>
-                <DataGridTextColumn Header="F/N" Binding="{Binding Fn}"/>
-                <DataGridTextColumn Header="Situação" Binding="{Binding Status}"/>
-                <DataGridTextColumn Header="Categoria" Binding="{Binding Categoria}"/>
-                <DataGridTextColumn Header="Disciplina" Binding="{Binding Disciplina}"/>
+                <DataGridTextColumn Header="RG" Binding="{Binding RG}"/>
+                <DataGridTextColumn Header="F/N" Binding="{Binding FaixaNivel}"/>
+                <DataGridTextColumn Header="Situação" Binding="{Binding IdSituacao}"/>
+                <DataGridTextColumn Header="Categoria" Binding="{Binding IdCategoria}"/>                
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

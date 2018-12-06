@@ -1,7 +1,7 @@
-﻿<Page x:Class="ControleDeAulas.View.TurmasView"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Page x:Class="ControleDeAulas.View.NiveisView"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="TurmasView">
+      Title="NiveisView">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5"/>
@@ -19,16 +19,16 @@
 
         <TextBlock x:Name="Header" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5" 
                    Style="{StaticResource TextBlockStyle}"
-                   Text="Turmas"/>
+                   Text="Níveis"/>
 
-        <DataGrid x:Name="DataGridTurmas" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"
-                  ItemsSource="{Binding Turmas}"
+        <DataGrid x:Name="DataGridProfessores" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"
+                  ItemsSource="{Binding Niveis}"
                   BorderBrush="Black" BorderThickness="1"
                   AutoGenerateColumns="False" IsReadOnly="True"
                   CanUserResizeColumns="True" CanUserAddRows="False" 
                   CanUserDeleteRows="False" SelectionMode="Extended">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nome Turma" Binding="{Binding Nome}"/>
+                <DataGridTextColumn Header="Nivel" Binding="{Binding Nome}"/>
                 <DataGridTextColumn Header="Descrição" Binding="{Binding Descricao}"/>
             </DataGrid.Columns>
         </DataGrid>

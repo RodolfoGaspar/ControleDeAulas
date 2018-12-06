@@ -1,4 +1,5 @@
 ﻿using ControleDeAulas.Factory;
+using ControleDeAulas.Helpers;
 using ControleDeAulas.Model;
 using System;
 using System.Collections.Generic;
@@ -12,18 +13,20 @@ namespace ControleDeAulas.ViewModel
 	public class ProfessoresViewModel
 	{
 		public ObservableCollection<Professor> Professores { get; private set; }
-		public Model.Professor professor { get; private set; }
+		public Professor Prof { get; private set; }
 
 		public ProfessoresViewModel()
 		{
-			professor = new AppFactory().NewProfessor();
+			Prof = new AppFactory().NewProfessor();
+
+			AppRibbon.SetFocus("tabOperacoesCadastro");
 
 			FillCollection();
 		}
 
 		private void FillCollection()
 		{
-			Professores = new ObservableCollection<Professor>(professor.Get());
+			Professores = new ObservableCollection<Professor>(Prof.Get());
 		}
 	}
 }

@@ -40,9 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categoria.cs" />
+    <Compile Include="Disciplina.cs" />
+    <Compile Include="Faixa.cs" />
+    <Compile Include="Interfaces\IDisciplina.cs" />
+    <Compile Include="Interfaces\ICategoria.cs" />
+    <Compile Include="Interfaces\IFaixa.cs" />
+    <Compile Include="Interfaces\INivel.cs" />
     <Compile Include="Interfaces\IProfessor.cs" />
+    <Compile Include="Interfaces\ISituacao.cs" />
+    <Compile Include="Interfaces\ITurma.cs" />
+    <Compile Include="Nivel.cs" />
     <Compile Include="Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Situacao.cs" />
+    <Compile Include="Turma.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

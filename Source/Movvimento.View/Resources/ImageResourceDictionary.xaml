@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <BitmapImage x:Key="logoBradesco" UriSource="Images/logoBradesco.png"/>
+    
     <BitmapImage x:Key="homeIcon" UriSource="Images/homeIcon.png"/>
     <BitmapImage x:Key="table_excel" UriSource="Images/table_excel.png"/>
     <BitmapImage x:Key="exportExcel" UriSource="Images/exportExcel.png"/>
@@ -35,6 +35,13 @@
     <BitmapImage x:Key="function" UriSource="Images/function.png"/>
     <BitmapImage x:Key="edit_mathematics" UriSource="Images/edit_mathematics.png"/>
     <BitmapImage x:Key="sala_de_aula" UriSource="Images/sala_de_aula.jpg"/>
+    
+
+    <BitmapImage x:Key="sort_alphabel_column" UriSource="Images/sort_alphabel_column.png"/>
+    <BitmapImage x:Key="sort_number_column" UriSource="Images/sort_number_column.png"/>
+    <BitmapImage x:Key="categories" UriSource="Images/categories.png"/>
+    <BitmapImage x:Key="legend" UriSource="Images/legend.png"/>
+
     <BitmapImage x:Key="Logo_Univesp" UriSource="Images/Logo_Univesp.png"/>
 </ResourceDictionary>
     

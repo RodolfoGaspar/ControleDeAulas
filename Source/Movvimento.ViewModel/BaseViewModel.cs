@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace ControleDeAulas.ViewModel
 {
@@ -41,6 +42,11 @@ namespace ControleDeAulas.ViewModel
 		internal void RaisePropertyChanged(string prop)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+		}
+
+		public static dynamic GetCurrentPageDataContext()
+		{
+			return ((Page)(Navigator.NavigationService.Content)).DataContext;
 		}
 	}
 }

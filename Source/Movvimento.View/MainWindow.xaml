@@ -22,7 +22,7 @@
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
 
-        <Ribbon x:Name="ribbon" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
+        <Ribbon x:Name="Ribbon" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
                 ScrollViewer.VerticalScrollBarVisibility="Auto"
                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
                 Background="WhiteSmoke" Loaded="Ribbon_Loaded">            
@@ -41,7 +41,23 @@
                                   Command="{Binding ListProfCommand}"
                                   LargeImageSource="{DynamicResource ssl_tls_manager}"
                                   SmallImageSource="{DynamicResource ssl_tls_manager}"/>
-                    <RibbonButton x:Name="btnMat" Label="Matérias"
+                    <RibbonButton x:Name="btnFaixa" Label="Faixas"
+                                  Command="{Binding ListFaixaCommand}"
+                                  LargeImageSource="{DynamicResource sort_number_column}"
+                                  SmallImageSource="{DynamicResource sort_number_column}"/>
+                    <RibbonButton x:Name="btnNivel" Label="Níveis"
+                                  Command="{Binding ListNivelCommand}"
+                                  LargeImageSource="{DynamicResource sort_alphabel_column}"
+                                  SmallImageSource="{DynamicResource sort_alphabel_column}"/>
+                    <RibbonButton x:Name="btnSituacao" Label="Situações"
+                                  Command="{Binding ListSituacaoCommand}"
+                                  LargeImageSource="{DynamicResource categories}"
+                                  SmallImageSource="{DynamicResource categories}"/>
+                    <RibbonButton x:Name="btnCategoria" Label="Categorias"
+                                  Command="{Binding ListCategoriaCommand}"
+                                  LargeImageSource="{DynamicResource legend}"
+                                  SmallImageSource="{DynamicResource legend}"/>
+                    <RibbonButton x:Name="btnMat" Label="Disciplinas"
                                   Command="{Binding ListMateriasCommand}"
                                   LargeImageSource="{DynamicResource blackboard_drawing}"
                                   SmallImageSource="{DynamicResource blackboard_drawing}"/>
