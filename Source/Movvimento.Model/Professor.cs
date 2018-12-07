@@ -16,16 +16,15 @@ namespace ControleDeAulas.Model
 		private ICategoria _categoria;
 		private IDisciplina _disciplina;
 
-		public List<Professor> Professores { get; private set; }
 		public int Id { get; set; }
 		public string Nome { get; set; }
 		public string RG { get; set; }
-		public int IdCategoria { get; set; }
-		public int IdDisciplina { get; set; }
-		public int IdFaixa { get; set; }
-		public int IdNivel { get; set; }
-		public string FaixaNivel { get { return $"{IdFaixa}{IdNivel}"; } }
-		public int IdSituacao { get; set; }
+		public Faixa Faixa { get; set; }
+		public Nivel Nivel { get; set; }
+		public Situacao Situacao { get; set; }
+		public Categoria Categoria { get; set; }
+		public List<Disciplina> Disciplinas { get; set; }
+		public string FaixaNivel { get { return $"{Faixa.NFaixa}{Nivel.Nome}"; } }
 
 		public Professor(IProfessor p, IFaixa f, INivel n, ISituacao s, ICategoria c, IDisciplina d)
 		{
@@ -36,15 +35,21 @@ namespace ControleDeAulas.Model
 			_categoria = c;
 			_disciplina = d;
 
-			Professores = new List<Professor>();
-		}
+			Disciplinas = new List<Disciplina>();
 
+			Faixa = new Faixa(f);
+			Nivel = new Nivel(n);
+			Situacao = new Situacao(s);
+			Categoria = new Categoria(c);
+		}
 
 		public List<Professor> Get()
 		{
-			Professores.AddRange(_professor.Get());
+			var professores = new List<Professor>();
+			professores.AddRange(_professor.Get());
+			professores.ForEach(p => { p.Disciplinas.AddRange(_disciplina.Get(p.Id)); });
 
-			return Professores;
+			return professores;
 		}
 	}
 }

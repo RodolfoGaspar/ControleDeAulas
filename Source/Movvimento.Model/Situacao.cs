@@ -11,7 +11,6 @@ namespace ControleDeAulas.Model
 	{
 		private ISituacao _situacao;
 
-		public List<Situacao> Situacoes { get; set; }
 		public int Id { get; set; }
 		public string Nome { get; set; }
 		public string Descricao { get; set; }
@@ -19,15 +18,14 @@ namespace ControleDeAulas.Model
 		public Situacao(ISituacao s)
 		{
 			_situacao = s;
-
-			Situacoes = new List<Situacao>();
 		}
 
 		public List<Situacao> Get()
 		{
-			Situacoes.AddRange(_situacao.Get());
+			var situacoes = new List<Situacao>();
+			situacoes.AddRange(_situacao.Get());
 
-			return Situacoes;
+			return situacoes;
 		}
 	}
 }

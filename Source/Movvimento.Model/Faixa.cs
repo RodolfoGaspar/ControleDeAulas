@@ -11,23 +11,21 @@ namespace ControleDeAulas.Model
 	{
 		private IFaixa _faixa;
 
-		public List<Faixa> Faixas { get; set; }
 		public int Id { get; set; }
-		public string NFaixa { get; set; }
+		public int NFaixa { get; set; }
 		public string Descricao { get; set; }
 
 		public Faixa(IFaixa f)
 		{
 			_faixa = f;
-
-			Faixas = new List<Faixa>();
 		}
 
 		public List<Faixa> Get()
 		{
-			Faixas.AddRange(_faixa.Get());
+			var faixas = new List<Faixa>();
+			faixas.AddRange(_faixa.Get());
 
-			return Faixas;
+			return faixas;
 		}
 	}
 }

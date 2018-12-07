@@ -25,10 +25,27 @@ namespace ControleDeAulas.DataAccess
 			{
 				var list = new List<Model.Professor>();
 
-				using (var cmd = new SQLiteCommand("SELECT * FROM Professores", conn))
+				var sb = new StringBuilder();
+
+				sb.Append("SELECT		PRF.Id, PRF.Nome, PRF.RG,");
+				sb.Append("				FXA.id AS IdFaixa, FXA.NFaixa, FXA.Descricao AS DescricaoFaixa,");
+				sb.Append("				NVS.id AS IdNivel, NVS.Nome AS NomeNivel,  NVS.Descricao AS DescricaoNivel,");
+				sb.Append("				SIT.id AS IdSituacao, SIT.Nome AS NomeSituacao,  SIT.Descricao AS DescricaoSituacao,");
+				sb.Append("				CAT.id AS IdCategoria, CAT.Nome AS NomeCategoria, CAT.Descricao AS DescricaoCategoria ");
+				sb.Append("FROM			Professores		AS	PRF ");
+				sb.Append("INNER JOIN	Faixas			AS	FXA ");
+				sb.Append("ON			PRF.IdFaixa		=	FXA.ID ");
+				sb.Append("INNER JOIN	Niveis			AS	NVS ");
+				sb.Append("ON			PRF.IdNivel		=	NVS.Id ");
+				sb.Append("INNER JOIN	Situacoes		AS	SIT ");
+				sb.Append("ON			PRF.IdSituacao	=	SIT.Id ");
+				sb.Append("INNER JOIN	Categorias		AS	CAT ");
+				sb.Append("ON			PRF.IdCategoria =	CAT.Id ");
+
+				using (var cmd = new SQLiteCommand(sb.ToString(), conn))
 				{
 					using (var da = new SQLiteDataAdapter(cmd))
-					{ Fill(list, da);}
+					{ Fill(list, da); }
 				}
 
 				return list;
@@ -58,11 +75,19 @@ namespace ControleDeAulas.DataAccess
 				p.Id = Convert.ToInt32(dr["id"]);
 				p.Nome = Convert.ToString(dr["Nome"]);
 				p.RG = Convert.ToString(dr["RG"]);
-				p.IdFaixa = Convert.ToInt32(dr["IdFaixa"]);
-				p.IdNivel = Convert.ToInt32(dr["IdNivel"]);
-				p.IdSituacao = Convert.ToInt32(dr["IdSituacao"]);
-				p.IdCategoria = Convert.ToInt32(dr["IdCategoria"]);
-				
+				p.Faixa.Id = Convert.ToInt32(dr["idFaixa"]);
+				p.Faixa.NFaixa = Convert.ToInt32(dr["NFaixa"]);
+				p.Faixa.Descricao = dr["DescricaoFaixa"] == DBNull.Value ? string.Empty : Convert.ToString(dr["DescricaoFaixa"]);
+				p.Nivel.Id = Convert.ToInt32(dr["IdNivel"]);
+				p.Nivel.Nome = Convert.ToString(dr["NomeNivel"]);
+				p.Nivel.Descricao = dr["DescricaoNivel"] == DBNull.Value ? string.Empty : Convert.ToString(dr["DescricaoNivel"]);
+				p.Situacao.Id = Convert.ToInt32(dr["IdSituacao"]);
+				p.Situacao.Nome = Convert.ToString(dr["NomeSituacao"]);
+				p.Situacao.Descricao = dr["DescricaoSituacao"] == DBNull.Value ? string.Empty : Convert.ToString(dr["DescricaoSituacao"]);
+				p.Categoria.Id = Convert.ToInt32(dr["IdCategoria"]);
+				p.Categoria.Nome = Convert.ToString(dr["NomeCategoria"]);
+				p.Categoria.Descricao = dr["DescricaoCategoria"] == DBNull.Value ? string.Empty : Convert.ToString(dr["DescricaoCategoria"]);
+
 				list.Add(p);
 			}
 		}

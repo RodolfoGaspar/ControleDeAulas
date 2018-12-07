@@ -9,5 +9,6 @@ namespace ControleDeAulas.Model.Interfaces
 	public interface IDisciplina
 	{
 		List<Disciplina> Get();
+		List<Disciplina> Get(int id);
 	}
 }

@@ -15,12 +15,6 @@ namespace ControleDeAulas.ViewModel.Wizard
 		public WizCadProfessorViewModel()
 		{
 			Prof = new AppFactory().NewProfessor();
-
-			Prof.IdCategoria = 1;
-			Prof.IdDisciplina = 1;
-			Prof.IdFaixa = 1;
-			Prof.IdNivel = 1;
-			Prof.IdNivel = 1;
 		}
 
 		public void Save()

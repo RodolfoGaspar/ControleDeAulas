@@ -11,22 +11,20 @@ namespace ControleDeAulas.Model
 	{
 		private IDisciplina _disciplina;
 
-		public List<Disciplina> Disciplinas { get; set; }
 		public int Id { get; set; }
 		public string Nome { get; set; }
 
 		public Disciplina(IDisciplina d)
 		{
 			_disciplina = d;
-
-			Disciplinas = new List<Disciplina>();
 		}
 
 		public List<Disciplina> Get()
 		{
-			Disciplinas.AddRange(_disciplina.Get());
+			var disciplinas = new List<Disciplina>();
+			disciplinas.AddRange(_disciplina.Get());
 
-			return Disciplinas;
+			return disciplinas;
 		}
 	}
 }

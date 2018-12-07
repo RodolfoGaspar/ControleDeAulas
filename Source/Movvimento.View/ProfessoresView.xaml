@@ -31,8 +31,8 @@
                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
                 <DataGridTextColumn Header="RG" Binding="{Binding RG}"/>
                 <DataGridTextColumn Header="F/N" Binding="{Binding FaixaNivel}"/>
-                <DataGridTextColumn Header="Situação" Binding="{Binding IdSituacao}"/>
-                <DataGridTextColumn Header="Categoria" Binding="{Binding IdCategoria}"/>                
+                <DataGridTextColumn Header="Situação" Binding="{Binding Situacao.Nome}"/>
+                <DataGridTextColumn Header="Categoria" Binding="{Binding Categoria.Nome}"/>                
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
