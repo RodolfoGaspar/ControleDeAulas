@@ -10,13 +10,14 @@ using System.Threading.Tasks;
 
 namespace ControleDeAulas.ViewModel
 {
-	public class ProfessoresViewModel
+	public class ProfessoresViewModel : BaseViewModel
 	{
 		public ObservableCollection<Professor> Professores { get; private set; }
 		public Professor Prof { get; private set; }
 
 		public ProfessoresViewModel()
 		{
+			MouseDoubleClickCommand = new RelayCommand(CurrentCellSelected);
 			Prof = new AppFactory().NewProfessor();
 
 			AppRibbon.SetFocus("tabOperacoesCadastro");
@@ -24,9 +25,18 @@ namespace ControleDeAulas.ViewModel
 			FillCollection();
 		}
 
+
 		private void FillCollection()
 		{
 			Professores = new ObservableCollection<Professor>(Prof.Get());
+		}
+
+		private void CurrentCellSelected(object obj)
+		{
+			if (Prof != null)
+			{
+				Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadProfessorView() { DataContext = new Wizard.WizCadProfessorViewModel(Prof) });
+			}
 		}
 	}
 }

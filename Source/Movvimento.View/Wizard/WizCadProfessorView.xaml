@@ -16,6 +16,9 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="130"/>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="5"/>
@@ -38,6 +41,13 @@
                  Text="{Binding Prof.RG, Mode=TwoWay, 
                                 UpdateSourceTrigger=PropertyChanged}"/>
 
-        
+        <Label Content="Faixa *" Grid.Row="3" Grid.Column="3"
+               Style="{StaticResource LabelStyle}"/>
+        <ComboBox x:Name="lstFaixa" Grid.Row="3" Grid.Column="4" 
+                 Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
+                 FontSize="12" VerticalContentAlignment="Center"
+                 ItemsSource="{Binding Faixas}"
+                  Text="{Binding NFaixa}"/>
+
     </Grid>
 </Page>
