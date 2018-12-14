@@ -10,16 +10,16 @@ namespace ControleDeAulas.Startup
 	/// Interação lógica para App.xaml
 	/// </summary>
 	public partial class App : Application
-    {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
+	{
+		protected override void OnStartup(StartupEventArgs e)
+		{
+			base.OnStartup(e);
 
-            var window = new MainWindow() { DataContext = new MainWindowViewModel() };
+			var window = new MainWindow() { DataContext = new MainWindowViewModel(new BaseSingleton()) };
 
-            window.Title = "Sistema de Controle de Aulas";
+			window.Title = "Sistema de Controle de Aulas";
 
-            window.Visibility = Visibility.Visible;
+			window.Visibility = Visibility.Visible;
 
 			AppRibbon.Ribbon = window.MyRibbon;
 
@@ -31,5 +31,5 @@ namespace ControleDeAulas.Startup
 
 			Navigator.NavigationService.Navigate(new View.HomeView() { DataContext = new HomeViewModel() });
 		}
-    }
+	}
 }

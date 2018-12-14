@@ -15,8 +15,10 @@ namespace ControleDeAulas.ViewModel
 		public ObservableCollection<Professor> Professores { get; private set; }
 		public Professor Prof { get; private set; }
 
-		public ProfessoresViewModel()
+		public ProfessoresViewModel(BaseSingleton baseSingleton)
 		{
+			Base_ = baseSingleton;
+
 			MouseDoubleClickCommand = new RelayCommand(CurrentCellSelected);
 			Prof = new AppFactory().NewProfessor();
 
@@ -35,7 +37,7 @@ namespace ControleDeAulas.ViewModel
 		{
 			if (Prof != null)
 			{
-				Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadProfessorView() { DataContext = new Wizard.WizCadProfessorViewModel(Prof) });
+				Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadProfessorView() { DataContext = new Wizard.WizCadProfessorViewModel(Prof, Base_) });
 			}
 		}
 	}

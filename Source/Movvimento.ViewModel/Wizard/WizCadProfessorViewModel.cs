@@ -17,15 +17,17 @@ namespace ControleDeAulas.ViewModel.Wizard
 		public List<Categoria> Categorias { get; set; }
 		public List<Disciplina> Disciplinas { get; set; }
 
-		public WizCadProfessorViewModel()
+		public WizCadProfessorViewModel(BaseSingleton baseSingleton)
 		{
+			Base_ = baseSingleton;
 			Prof = new AppFactory().NewProfessor();
 			FillCollections();
 			SetProperties();
 		}
-				
-		public WizCadProfessorViewModel(Professor prof)
+
+		public WizCadProfessorViewModel(Professor prof, BaseSingleton baseSingleton)
 		{
+			Base_ = baseSingleton;
 			Prof = prof;
 			FillCollections();
 			SetProperties();
@@ -46,12 +48,13 @@ namespace ControleDeAulas.ViewModel.Wizard
 
 		private void SetProperties()
 		{
-			SetProperties(_zIndex: 2, _wizColumnCancel: 60, _wizColumnFinish:60, _lblColumnFinish: "Salvar");
+			//Base_.SetProperties(_zIndex: 2, _wizColumnCancel: 60, _lblColumnCancel: "Cancelar_", _wizColumnFinish: 60, _lblColumnFinish: "Salvar_");
+			Base_.SetProperties(_zIndex: 2, _wizColumnCancel: 60, _wizColumnBack: 60, _wizColumnNext: 60, _wizColumnFinish: 60);
 		}
 
 
 		public void Save()
 		{ }
-		
+
 	}
 }

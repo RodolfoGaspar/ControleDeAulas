@@ -43,13 +43,15 @@ namespace ControleDeAulas.ViewModel
 
 		public RelayCommand NovoCommand { get; set; }
 		public RelayCommand DeleteCommand { get; private set; }
-		public RelayCommand ClosedCommand { get; }
+		public RelayCommand ClosedCommand { get; }		
 		#endregion
 
 		#region Constructors
-		public MainWindowViewModel()
+		public MainWindowViewModel(BaseSingleton baseSingleton)
 		{
-			SetProperties();
+			Base_ = baseSingleton;
+				
+			baseSingleton.SetProperties();
 
 			AppRibbon.SetVisibility("tabOperacoesCadastro", Visibility.Collapsed);
 
@@ -73,7 +75,7 @@ namespace ControleDeAulas.ViewModel
 		#endregion
 
 		#region Functions
-		private void ListProf(object parameters) => Navigator.NavigationService.Navigate(new ProfessoresView() { DataContext = new ProfessoresViewModel() });
+		private void ListProf(object parameters) => Navigator.NavigationService.Navigate(new ProfessoresView() { DataContext = new ProfessoresViewModel(Base_) });
 
 		private void ListFaixa(object parameters) => Navigator.NavigationService.Navigate(new FaixasView() { DataContext = new FaixasViewModel() });
 
@@ -125,7 +127,7 @@ namespace ControleDeAulas.ViewModel
 		private void Cancel(object parameter)
 		{
 			Mouse.OverrideCursor = Cursors.Wait;
-			SetProperties();
+			//SetProperties();
 			Mouse.OverrideCursor = Cursors.Arrow;
 		}
 		/// <summary>
@@ -161,11 +163,11 @@ namespace ControleDeAulas.ViewModel
 		/// <param name="parameter"></param>
 		private void Add(object parameter)
 		{
-			SetProperties(_zIndex: 2, _wizColumnCancel: 60, _wizColumnNext: 60);
+			//SetProperties(_zIndex: 2, _wizColumnCancel: 60, _wizColumnNext: 60);
 			switch (Navigator.NavigationService.Content.ToString())
 			{
 				case ("ControleDeAulas.View.ProfessoresView"):
-					Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadProfessorView() { DataContext = new Wizard.WizCadProfessorViewModel() });
+					Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadProfessorView() { DataContext = new Wizard.WizCadProfessorViewModel(Base_) });
 					break;
 			}
 		}

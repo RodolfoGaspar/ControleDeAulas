@@ -151,9 +151,9 @@
         </Frame>
         
         <Rectangle x:Name="Shadow" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" 
-                   Fill="Black" Opacity="0.50" Panel.ZIndex="{Binding ZIndex}"/>
+                   Fill="Black" Opacity="0.50" Panel.ZIndex="{Binding Base_.ZIndex}"/>
         <Grid x:Name="gridWizard" Grid.Column="2" Grid.Row="2"
-              Panel.ZIndex="{Binding ZIndex}"
+              Panel.ZIndex="{Binding Base_.ZIndex}"
               Style="{StaticResource GridStyle}">
 
             <Grid.BitmapEffect>
@@ -170,14 +170,14 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="{Binding WizColumnCancel}"/>
-                <ColumnDefinition Width="{Binding WizRightColumnCancel}"/>
-                <ColumnDefinition Width="{Binding WizColumnBack}"/>
-                <ColumnDefinition Width="{Binding WizRightColumnBack}"/>
-                <ColumnDefinition Width="{Binding WizColumnNext}"/>
-                <ColumnDefinition Width="{Binding WizRightColumnNext}"/>
-                <ColumnDefinition Width="{Binding WizColumnFinish}"/>
-                <ColumnDefinition Width="{Binding WizRightColumnFinish}"/>
+                <ColumnDefinition Width="{Binding Base_.WizColumnCancel}"/>
+                <ColumnDefinition Width="{Binding Base_.WizRightColumnCancel}"/>
+                <ColumnDefinition Width="{Binding Base_.WizColumnBack}"/>
+                <ColumnDefinition Width="{Binding Base_.WizRightColumnBack}"/>
+                <ColumnDefinition Width="{Binding Base_.WizColumnNext}"/>
+                <ColumnDefinition Width="{Binding Base_.WizRightColumnNext}"/>
+                <ColumnDefinition Width="{Binding Base_.WizColumnFinish}"/>
+                <ColumnDefinition Width="{Binding Base_.WizRightColumnFinish}"/>
             </Grid.ColumnDefinitions>
 
             <TextBlock x:Name="HeaderWizard" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" 
@@ -193,20 +193,20 @@
             </Frame>
 
             <Button x:Name="btnCancel" Grid.Row="3" Grid.Column="2"
-                    Content="{Binding LblColumnCancel}" 
-                    Command="{Binding WizCancelCommand}"
+                    Content="{Binding Base_.LblColumnCancel}" 
+                    Command="{Binding Base_.WizCancelCommand}"
                     Style="{DynamicResource SquareButtonStyle}"/>
             <Button x:Name="btnBack" Grid.Row="3" Grid.Column="4"
-                    Content="{Binding LblColumnBack}" 
-                    Command="{Binding WizBackCommand}"
+                    Content="{Binding Base_.LblColumnBack}" 
+                    Command="{Binding Base_.WizBackCommand}"
                     Style="{DynamicResource SquareButtonStyle}"/>
             <Button x:Name="btnNext" Grid.Row="3" Grid.Column="6"
-                    Content="{Binding LblColumnNext}" 
-                    Command="{Binding WixNextCommand}"
+                    Content="{Binding Base_.LblColumnNext}" 
+                    Command="{Binding Base_.WixNextCommand}"
                     Style="{DynamicResource SquareButtonStyle}"/>
             <Button x:Name="btnFinish" Grid.Row="3" Grid.Column="8"
-                    Content="{Binding LblColumnFinish}" 
-                    Command="{Binding WizFinishCommand}"
+                    Content="{Binding Base_.LblColumnFinish}" 
+                    Command="{Binding Base_.WizFinishCommand}"
                     Style="{DynamicResource SquareButtonStyle}"/>
         </Grid>
 
