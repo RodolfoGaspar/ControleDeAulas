@@ -43,14 +43,14 @@ namespace ControleDeAulas.ViewModel
 
 		public RelayCommand NovoCommand { get; set; }
 		public RelayCommand DeleteCommand { get; private set; }
-		public RelayCommand ClosedCommand { get; }		
+		public RelayCommand ClosedCommand { get; }
 		#endregion
 
 		#region Constructors
 		public MainWindowViewModel(BaseSingleton baseSingleton)
 		{
 			Base_ = baseSingleton;
-				
+
 			baseSingleton.SetProperties();
 
 			AppRibbon.SetVisibility("tabOperacoesCadastro", Visibility.Collapsed);
@@ -80,7 +80,7 @@ namespace ControleDeAulas.ViewModel
 		private void ListFaixa(object parameters) => Navigator.NavigationService.Navigate(new FaixasView() { DataContext = new FaixasViewModel() });
 
 		private void ListNivel(object parameters) => Navigator.NavigationService.Navigate(new NiveisView() { DataContext = new NiveisViewModel() });
-				
+
 		private void ListSituacao(object parameters) => Navigator.NavigationService.Navigate(new SituacoesView() { DataContext = new SituacoesViewModel() });
 
 		private void ListCategoria(object parameters) => Navigator.NavigationService.Navigate(new CategoriasView() { DataContext = new CategoriasViewModel() });
@@ -127,7 +127,7 @@ namespace ControleDeAulas.ViewModel
 		private void Cancel(object parameter)
 		{
 			Mouse.OverrideCursor = Cursors.Wait;
-			//SetProperties();
+			Base_.SetProperties();
 			Mouse.OverrideCursor = Cursors.Arrow;
 		}
 		/// <summary>
@@ -140,6 +140,9 @@ namespace ControleDeAulas.ViewModel
 			string wizard = Navigator.WizardNavigationService.Content.ToString();
 			switch (wizard)
 			{
+				case ("ControleDeAulas.View.Wizard.WizCadProfessorView"):
+					GetCurrentWizardPageDataContext().Save();
+					break;
 				default: break;
 			}
 			Mouse.OverrideCursor = Cursors.Arrow;
@@ -171,7 +174,7 @@ namespace ControleDeAulas.ViewModel
 					break;
 			}
 		}
-		#endregion		
+		#endregion
 		#endregion
 	}
 }

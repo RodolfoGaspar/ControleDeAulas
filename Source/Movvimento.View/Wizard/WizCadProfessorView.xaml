@@ -16,17 +16,19 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="60"/>
-            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="130*"/>
             <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="130*"/>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
 
         <Label Content="Nome *" Grid.Row="1" Grid.Column="1"
                Style="{StaticResource LabelStyle}"/>
-        <TextBox x:Name="txtNome" Grid.Row="1" Grid.Column="2" 
+        <TextBox x:Name="txtNome" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="5"
                  Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
                  FontSize="12" VerticalContentAlignment="Center"
                  Text="{Binding Prof.Nome, Mode=TwoWay, 
@@ -44,10 +46,53 @@
         <Label Content="Faixa *" Grid.Row="3" Grid.Column="3"
                Style="{StaticResource LabelStyle}"/>
         <ComboBox x:Name="lstFaixa" Grid.Row="3" Grid.Column="4" 
+                  Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
+                  FontSize="12" VerticalContentAlignment="Center"
+                  ItemsSource="{Binding Faixas}"
+                  SelectedItem="{Binding Prof.Faixa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="Bold" Text="{Binding NFaixa}" Width="20"/>
+                        <TextBlock Text="{Binding Descricao}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
+        <Label Content="Nivel *" Grid.Row="3" Grid.Column="5"
+               Style="{StaticResource LabelStyle}"/>
+        <ComboBox x:Name="lstNivel" Grid.Row="3" Grid.Column="6" 
                  Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
                  FontSize="12" VerticalContentAlignment="Center"
-                 ItemsSource="{Binding Faixas}"
-                  Text="{Binding NFaixa}"/>
+                 ItemsSource="{Binding Niveis}"
+                  SelectedItem="{Binding Prof.Nivel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="Bold" Text="{Binding Nome}" Width="20"/>
+                        <TextBlock Text="{Binding Descricao}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Categoria *" Grid.Row="5" Grid.Column="1"
+               Style="{StaticResource LabelStyle}"/>
+        <ComboBox x:Name="lstCategorias" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="5"
+                 Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
+                 FontSize="12" VerticalContentAlignment="Center"
+                 ItemsSource="{Binding Categorias}"
+                  SelectedValue="{Binding Prof.Categoria.Nome, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="Bold" Text="{Binding Nome}" Width="100"/>
+                        <TextBlock Text="{Binding Descricao}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
     </Grid>
 </Page>

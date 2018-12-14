@@ -194,19 +194,19 @@
 
             <Button x:Name="btnCancel" Grid.Row="3" Grid.Column="2"
                     Content="{Binding Base_.LblColumnCancel}" 
-                    Command="{Binding Base_.WizCancelCommand}"
+                    Command="{Binding WizCancelCommand}"
                     Style="{DynamicResource SquareButtonStyle}"/>
             <Button x:Name="btnBack" Grid.Row="3" Grid.Column="4"
                     Content="{Binding Base_.LblColumnBack}" 
-                    Command="{Binding Base_.WizBackCommand}"
+                    Command="{Binding WizBackCommand}"
                     Style="{DynamicResource SquareButtonStyle}"/>
             <Button x:Name="btnNext" Grid.Row="3" Grid.Column="6"
                     Content="{Binding Base_.LblColumnNext}" 
-                    Command="{Binding Base_.WixNextCommand}"
+                    Command="{Binding WixNextCommand}"
                     Style="{DynamicResource SquareButtonStyle}"/>
             <Button x:Name="btnFinish" Grid.Row="3" Grid.Column="8"
                     Content="{Binding Base_.LblColumnFinish}" 
-                    Command="{Binding Base_.WizFinishCommand}"
+                    Command="{Binding WizFinishCommand}"
                     Style="{DynamicResource SquareButtonStyle}"/>
         </Grid>
 

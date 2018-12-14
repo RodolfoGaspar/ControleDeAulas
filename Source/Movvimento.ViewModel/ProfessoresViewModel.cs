@@ -1,19 +1,14 @@
 ﻿using ControleDeAulas.Factory;
 using ControleDeAulas.Helpers;
 using ControleDeAulas.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeAulas.ViewModel
 {
 	public class ProfessoresViewModel : BaseViewModel
 	{
 		public ObservableCollection<Professor> Professores { get; private set; }
-		public Professor Prof { get; private set; }
+		public Professor Prof { get; set; }
 
 		public ProfessoresViewModel(BaseSingleton baseSingleton)
 		{
@@ -33,11 +28,11 @@ namespace ControleDeAulas.ViewModel
 			Professores = new ObservableCollection<Professor>(Prof.Get());
 		}
 
-		private void CurrentCellSelected(object obj)
+		private void CurrentCellSelected(object paramenter)
 		{
-			if (Prof != null)
+			if (SelectedItem != null)
 			{
-				Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadProfessorView() { DataContext = new Wizard.WizCadProfessorViewModel(Prof, Base_) });
+				Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadProfessorView() { DataContext = new Wizard.WizCadProfessorViewModel(SelectedItem, Base_) });
 			}
 		}
 	}

@@ -30,6 +30,8 @@ namespace ControleDeAulas.ViewModel
 		public string delAll { get; set; }
 
 		public BaseSingleton Base_ { get; set; }
+
+		public dynamic SelectedItem { get; set; }
 		#endregion
 
 		#region RelayCommand
@@ -46,6 +48,11 @@ namespace ControleDeAulas.ViewModel
 		public static dynamic GetCurrentPageDataContext()
 		{
 			return ((Page)(Navigator.NavigationService.Content)).DataContext;
+		}
+
+		public static dynamic GetCurrentWizardPageDataContext()
+		{
+			return ((Page)(Navigator.WizardNavigationService.Content)).DataContext;
 		}
 	}
 }

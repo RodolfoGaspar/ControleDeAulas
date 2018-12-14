@@ -10,7 +10,7 @@ namespace ControleDeAulas.ViewModel.Wizard
 {
 	public class WizCadProfessorViewModel : BaseViewModel
 	{
-		public Professor Prof { get; private set; }
+		public Professor Prof { get; set; }
 		public List<Faixa> Faixas { get; set; }
 		public List<Nivel> Niveis { get; set; }
 		public List<Situacao> Situacoes { get; set; }
@@ -46,15 +46,13 @@ namespace ControleDeAulas.ViewModel.Wizard
 			Categorias.AddRange(new AppFactory().NewCategoria().Get());
 		}
 
-		private void SetProperties()
-		{
-			//Base_.SetProperties(_zIndex: 2, _wizColumnCancel: 60, _lblColumnCancel: "Cancelar_", _wizColumnFinish: 60, _lblColumnFinish: "Salvar_");
-			Base_.SetProperties(_zIndex: 2, _wizColumnCancel: 60, _wizColumnBack: 60, _wizColumnNext: 60, _wizColumnFinish: 60);
-		}
+		private void SetProperties() => Base_.SetProperties(_zIndex: 2, _wizColumnCancel: 60, _lblColumnCancel: "Cancelar", _wizColumnFinish: 60, _lblColumnFinish: "Salvar");
 
 
 		public void Save()
-		{ }
+		{
+
+		}
 
 	}
 }
