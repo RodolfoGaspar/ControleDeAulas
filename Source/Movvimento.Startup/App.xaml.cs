@@ -15,6 +15,8 @@ namespace ControleDeAulas.Startup
 		{
 			base.OnStartup(e);
 
+			System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("pt-BR");
+
 			var window = new MainWindow() { DataContext = new MainWindowViewModel(new BaseSingleton()) };
 
 			window.Title = "Sistema de Controle de Aulas";

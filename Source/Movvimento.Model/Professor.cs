@@ -43,6 +43,15 @@ namespace ControleDeAulas.Model
 			Categoria = new Categoria(c);
 		}
 
+		public List<Professor> Get(int categoria)
+		{
+			var professores = new List<Professor>();
+			professores.AddRange(_professor.Get(categoria));
+			professores.ForEach(p => { p.Disciplinas.AddRange(_disciplina.Get(p.Id)); });
+
+			return professores;
+		}
+
 		public List<Professor> Get()
 		{
 			var professores = new List<Professor>();

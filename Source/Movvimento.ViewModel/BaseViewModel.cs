@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,9 +42,18 @@ namespace ControleDeAulas.ViewModel
 		public RelayCommand MouseDoubleClickCommand { get; set; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
-		#endregion
 
-		
+		internal void RaisePropertyChanged(string prop)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+#if DEBUG
+			Debug.Print($"Property Changed: {prop}");
+#endif
+		}
+
+#endregion
+
+
 
 		public static dynamic GetCurrentPageDataContext()
 		{

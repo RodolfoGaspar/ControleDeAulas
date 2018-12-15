@@ -25,22 +25,7 @@ namespace ControleDeAulas.DataAccess
 			{
 				var list = new List<Model.Professor>();
 
-				var sb = new StringBuilder();
-
-				sb.Append("SELECT		PRF.Id, PRF.Nome, PRF.RG,");
-				sb.Append("				FXA.id AS IdFaixa, FXA.NFaixa, FXA.Descricao AS DescricaoFaixa,");
-				sb.Append("				NVS.id AS IdNivel, NVS.Nome AS NomeNivel,  NVS.Descricao AS DescricaoNivel,");
-				sb.Append("				SIT.id AS IdSituacao, SIT.Nome AS NomeSituacao,  SIT.Descricao AS DescricaoSituacao,");
-				sb.Append("				CAT.id AS IdCategoria, CAT.Nome AS NomeCategoria, CAT.Descricao AS DescricaoCategoria ");
-				sb.Append("FROM			Professores		AS	PRF ");
-				sb.Append("INNER JOIN	Faixas			AS	FXA ");
-				sb.Append("ON			PRF.IdFaixa		=	FXA.ID ");
-				sb.Append("INNER JOIN	Niveis			AS	NVS ");
-				sb.Append("ON			PRF.IdNivel		=	NVS.Id ");
-				sb.Append("INNER JOIN	Situacoes		AS	SIT ");
-				sb.Append("ON			PRF.IdSituacao	=	SIT.Id ");
-				sb.Append("INNER JOIN	Categorias		AS	CAT ");
-				sb.Append("ON			PRF.IdCategoria =	CAT.Id ");
+				StringBuilder sb = GetTSql();
 
 				using (var cmd = new SQLiteCommand(sb.ToString(), conn))
 				{
@@ -49,11 +34,46 @@ namespace ControleDeAulas.DataAccess
 				}
 
 				return list;
-
 			}
 			catch (Exception ex)
 			{ throw ex; }
 			finally { conn.Close(); }
+		}
+
+		private static StringBuilder GetTSql()
+		{
+			var sb = new StringBuilder();
+			sb.Append("SELECT		PRF.Id, PRF.Nome, PRF.RG,");
+			sb.Append("				FXA.id AS IdFaixa, FXA.NFaixa, FXA.Descricao AS DescricaoFaixa,");
+			sb.Append("				NVS.id AS IdNivel, NVS.Nome AS NomeNivel,  NVS.Descricao AS DescricaoNivel,");
+			sb.Append("				SIT.id AS IdSituacao, SIT.Nome AS NomeSituacao,  SIT.Descricao AS DescricaoSituacao,");
+			sb.Append("				CAT.id AS IdCategoria, CAT.Nome AS NomeCategoria, CAT.Descricao AS DescricaoCategoria ");
+			sb.Append("FROM			Professores		AS	PRF ");
+			sb.Append("INNER JOIN	Faixas			AS	FXA ");
+			sb.Append("ON			PRF.IdFaixa		=	FXA.ID ");
+			sb.Append("INNER JOIN	Niveis			AS	NVS ");
+			sb.Append("ON			PRF.IdNivel		=	NVS.Id ");
+			sb.Append("INNER JOIN	Situacoes		AS	SIT ");
+			sb.Append("ON			PRF.IdSituacao	=	SIT.Id ");
+			sb.Append("INNER JOIN	Categorias		AS	CAT ");
+			sb.Append("ON			PRF.IdCategoria =	CAT.Id ");
+			return sb;
+		}
+
+		public List<Model.Professor> Get(int categoria)
+		{
+			var list = new List<Model.Professor>();
+
+			StringBuilder sb = GetTSql();
+			sb.Append($"WHERE	IdCategoria = {categoria} ");
+
+			using (var cmd = new SQLiteCommand(sb.ToString(), conn))
+			{
+				using (var da = new SQLiteDataAdapter(cmd))
+				{ Fill(list, da); }
+			}
+
+			return list;
 		}
 
 		private void Fill(List<Model.Professor> list, SQLiteDataAdapter da)

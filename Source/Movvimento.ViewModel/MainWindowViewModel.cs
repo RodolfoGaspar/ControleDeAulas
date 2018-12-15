@@ -40,6 +40,7 @@ namespace ControleDeAulas.ViewModel
 		public RelayCommand ListCategoriaCommand { get; set; }
 		public RelayCommand ListMateriasCommand { get; set; }
 		public RelayCommand ListTurmasCommand { get; set; }
+		public RelayCommand ListFaltasCommand { get; set; }
 
 		public RelayCommand NovoCommand { get; set; }
 		public RelayCommand DeleteCommand { get; private set; }
@@ -62,6 +63,7 @@ namespace ControleDeAulas.ViewModel
 			ListCategoriaCommand = new RelayCommand(ListCategoria);
 			ListMateriasCommand = new RelayCommand(ListMaterias);
 			ListTurmasCommand = new RelayCommand(ListTurmas);
+			ListFaltasCommand = new RelayCommand(ListFaltas);
 
 			NovoCommand = new RelayCommand(Add);
 			DeleteCommand = new RelayCommand(Delete);
@@ -88,6 +90,8 @@ namespace ControleDeAulas.ViewModel
 		private void ListMaterias(object parameter) => Navigator.NavigationService.Navigate(new MateriasView() { DataContext = new DisciplinasViewModel() });
 
 		private void ListTurmas(object parameters) => Navigator.NavigationService.Navigate(new TurmasView() { DataContext = new TurmasViewModel() });
+
+		private void ListFaltas(object parameters) => Navigator.NavigationService.Navigate(new BoletimDiarioView() { DataContext = new BoletimDiarioViewModel(Base_) });
 
 		#region Functions Wizard
 		/// <summary>
@@ -171,6 +175,9 @@ namespace ControleDeAulas.ViewModel
 			{
 				case ("ControleDeAulas.View.ProfessoresView"):
 					Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadProfessorView() { DataContext = new Wizard.WizCadProfessorViewModel(Base_) });
+					break;
+				case ("ControleDeAulas.View.BoletimDiarioView"):
+					Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadBoletimProfView() { DataContext = new Wizard.WizCadBoletimProfViewModel(Base_) });
 					break;
 			}
 		}

@@ -18,9 +18,13 @@ namespace ControleDeAulas.Factory
 
 		public Faixa NewFaixa() => new Faixa(new DataAccess.Faixa());
 
+		public Falta NewFalta() => new Falta(new DataAccess.Falta());
+
 		public Nivel NewNivel() => new Nivel(new DataAccess.Nivel());
 
 		public Situacao NewSituacao() => new Situacao(new DataAccess.Situacao());
+
+		public TurmaFalta NewTurmaFalta => new TurmaFalta(new DataAccess.Turma(), new DataAccess.Falta(), new DataAccess.Professor());
 
 		public Categoria NewCategoria() => new Categoria(new DataAccess.Categoria());
 

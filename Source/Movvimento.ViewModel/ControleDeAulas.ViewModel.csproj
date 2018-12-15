@@ -59,6 +59,7 @@
     <Compile Include="SaldoAulasViewModel.cs" />
     <Compile Include="SituacoesViewModel.cs" />
     <Compile Include="TurmasViewModel.cs" />
+    <Compile Include="Wizard\WizCadBoletimProfViewModel.cs" />
     <Compile Include="Wizard\WizCadProfessorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

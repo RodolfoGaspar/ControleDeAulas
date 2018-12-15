@@ -1,0 +1,128 @@
+﻿<Page x:Class="ControleDeAulas.View.Wizard.WizCadBoletimProfView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      Title="WizCadBoletimProfView">
+    <Grid Style="{StaticResource GridStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="300*"/>            
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="300*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="55"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Nome *" Grid.Row="1" Grid.Column="1"
+               Style="{StaticResource LabelStyle}"/>
+        <ComboBox x:Name="lstProf" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="6"
+                  Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
+                  FontSize="12"
+                  ItemsSource="{Binding Professores}"
+                  Text="{Binding Falta.Professor, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Falta.Professor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Nome}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Data *" Grid.Row="3" Grid.Column="1"
+               Style="{StaticResource LabelStyle}"/>
+        <DatePicker x:Name="dpData" Grid.Row="3" Grid.Column="2" 
+                    Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
+                    FontSize="12" VerticalContentAlignment="Center"
+                    SelectedDate="{Binding Falta.Data, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectedDateChanged">
+                    <i:InvokeCommandAction Command="{Binding UpdateDateCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DatePicker>
+        <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding DiaDaSemana}" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+        <Label Content="Disciplinas *" Grid.Row="3" Grid.Column="5"
+               Style="{StaticResource LabelStyle}"/>
+        <ComboBox x:Name="lstFaixa" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
+                  Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
+                  FontSize="12" VerticalContentAlignment="Center"
+                  ItemsSource="{Binding Disciplinas}"
+                  SelectedItem="{Binding Falta.Disciplina, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Nome}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Turmas" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="6"               
+               Style="{StaticResource LabelStyle}"/>
+        <DataGrid x:Name="DtgTurmas" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="7" 
+                  ItemsSource="{Binding Turmas}"
+                  BorderBrush="Black" BorderThickness="1"
+                  AutoGenerateColumns="False"
+                  CanUserResizeColumns="True" CanUserAddRows="False" 
+                  CanUserDeleteRows="False" SelectionMode="Extended">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn />
+                <DataGridTextColumn Header="Nome" Binding="{Binding Turma.Nome}"/>
+                <DataGridTextColumn Header="Nº Aulas" Binding="{Binding Falta.NFaltas}"/>
+                <DataGridComboBoxColumn Header="Prof. Substituto"
+                                        TextBinding="{Binding Professor.Nome}">
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding Professores}" />
+                            <Setter Property="DisplayMemberPath" Value="Nome"/>
+                            <Setter Property="SelectedItem" Value="{Binding Professor}"/>                            
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Nº Aulas Substituídas" Binding="{Binding Falta.NAulasSubs}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Faltas" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="7"               
+               Style="{StaticResource LabelStyle}"/>
+        <DataGrid x:Name="DtgFaltas" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="6" 
+                  ItemsSource="{Binding Faltas}"
+                  BorderBrush="Black" BorderThickness="1"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  CanUserResizeColumns="True" CanUserAddRows="False" 
+                  CanUserDeleteRows="False" SelectionMode="Extended">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Professor" Binding="{Binding Professor.Nome}"/>
+                <DataGridTextColumn Header="Data" Binding="{Binding Data}"/>
+                <DataGridTextColumn Header="Disciplina" Binding="{Binding Disciplina.Nome}"/>
+                <DataGridTextColumn Header="Turma" Binding="{Binding Turma.Nome}"/>
+                <DataGridTextColumn Header="Nº de Faltas" Binding="{Binding NFaltas}"/>
+                <DataGridTextColumn Header="Prof. Substituto" Binding="{Binding ProfSubs.Nome}"/>
+                <DataGridTextColumn Header="Nº Aulas Substituídas" Binding="{Binding NAulasSubs}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

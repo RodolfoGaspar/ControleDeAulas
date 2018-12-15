@@ -64,6 +64,7 @@
     <Compile Include="DataHandler.cs" />
     <Compile Include="Disciplina.cs" />
     <Compile Include="Faixa.cs" />
+    <Compile Include="Falta.cs" />
     <Compile Include="Nivel.cs" />
     <Compile Include="Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

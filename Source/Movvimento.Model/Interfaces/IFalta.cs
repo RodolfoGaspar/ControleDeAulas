@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ControleDeAulas.Model.Interfaces
 {
-	public interface IProfessor
+	public interface IFalta
 	{
-		List<Professor> Get();
-		List<Professor> Get(int categoria);
+		List<Falta> Get();
 	}
 }

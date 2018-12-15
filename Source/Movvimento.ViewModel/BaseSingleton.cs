@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ControleDeAulas.ViewModel
 {
-	public sealed class BaseSingleton : INotifyPropertyChanged
+	public sealed class BaseSingleton : BaseViewModel
 	{
 		static BaseSingleton instance = null;
 		public BaseSingleton() { }
@@ -24,15 +24,7 @@ namespace ControleDeAulas.ViewModel
 				return instance;
 			}
 		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		internal void RaisePropertyChanged(string prop)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-			Debug.Print($"Property Changed: {prop}");
-		}
-
+				
 		private string zIndex;
 		/// <summary>
 		/// Define a ancoragem do Wizard (Exibe ou Oculta o Wizard).
