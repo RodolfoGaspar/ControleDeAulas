@@ -2,6 +2,8 @@
 using ControleDeAulas.View;
 using ControleDeAulas.ViewModel;
 using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 
 namespace ControleDeAulas.Startup
@@ -14,9 +16,7 @@ namespace ControleDeAulas.Startup
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			base.OnStartup(e);
-
-			System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("pt-BR");
-
+						
 			var window = new MainWindow() { DataContext = new MainWindowViewModel(new BaseSingleton()) };
 
 			window.Title = "Sistema de Controle de Aulas";

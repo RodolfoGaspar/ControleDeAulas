@@ -4,6 +4,7 @@ using ControleDeAulas.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,14 +82,14 @@ namespace ControleDeAulas.ViewModel.Wizard
 
 		private void SetProperties()
 		{
-			DiaDaSemana = Falta.Data.DayOfWeek.ToString();
+			UpdateDate(new object());
 			UpdateDateCommand = new RelayCommand(UpdateDate);
 			Base_.SetProperties(_zIndex: 2, _wizColumnCancel: 60, _lblColumnCancel: "Cancelar", _wizColumnFinish: 60, _lblColumnFinish: "Salvar");
 		}
 
 		private void UpdateDate(object parameter)
 		{
-			DiaDaSemana = Falta.Data.DayOfWeek.ToString();
+			DiaDaSemana = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Falta.Data.ToString("dddd", new CultureInfo("pt-BR")));
 		}
 	}
 }

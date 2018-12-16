@@ -27,14 +27,14 @@
             <ColumnDefinition Width="80*"/>
             <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="130*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
 
         <Label Content="Nome *" Grid.Row="1" Grid.Column="1"
                Style="{StaticResource LabelStyle}"/>
-        <ComboBox x:Name="lstProf" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="6"
+        <ComboBox x:Name="lstProf" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="7"
                   Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
                   FontSize="12"
                   ItemsSource="{Binding Professores}"
@@ -66,7 +66,7 @@
 
         <Label Content="Disciplinas *" Grid.Row="3" Grid.Column="5"
                Style="{StaticResource LabelStyle}"/>
-        <ComboBox x:Name="lstFaixa" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
+        <ComboBox x:Name="lstFaixa" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="3"
                   Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
                   FontSize="12" VerticalContentAlignment="Center"
                   ItemsSource="{Binding Disciplinas}"
@@ -80,9 +80,9 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Content="Turmas" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="6"               
+        <Label Content="Turmas" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="8"
                Style="{StaticResource LabelStyle}"/>
-        <DataGrid x:Name="DtgTurmas" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="7" 
+        <DataGrid x:Name="DtgTurmas" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="6" 
                   ItemsSource="{Binding Turmas}"
                   BorderBrush="Black" BorderThickness="1"
                   AutoGenerateColumns="False"
@@ -92,23 +92,38 @@
                 <DataGridCheckBoxColumn />
                 <DataGridTextColumn Header="Nome" Binding="{Binding Turma.Nome}"/>
                 <DataGridTextColumn Header="Nº Aulas" Binding="{Binding Falta.NFaltas}"/>
-                <DataGridComboBoxColumn Header="Prof. Substituto"
-                                        TextBinding="{Binding Professor.Nome}">
-                    <DataGridComboBoxColumn.EditingElementStyle>
-                        <Style TargetType="ComboBox">
-                            <Setter Property="ItemsSource" Value="{Binding Professores}" />
-                            <Setter Property="DisplayMemberPath" Value="Nome"/>
-                            <Setter Property="SelectedItem" Value="{Binding Professor}"/>                            
-                        </Style>
-                    </DataGridComboBoxColumn.EditingElementStyle>
-                </DataGridComboBoxColumn>
+                <DataGridTemplateColumn Header="Profº Substituto">
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox x:Name="cmbProfs"
+                                      ItemsSource="{Binding Professores}"
+                                      DisplayMemberPath="Nome"
+                                      SelectedValue="{Binding Professor.Nome}"
+                                      SelectedValuePath="Nome">                                
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox x:Name="cmbProfs"
+                                      ItemsSource="{Binding Professores}"
+                                      DisplayMemberPath="Nome"
+                                      SelectedValue="{Binding Professor.Nome}"
+                                      SelectedValuePath="Nome">
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Nº Aulas Substituídas" Binding="{Binding Falta.NAulasSubs}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="btnAdd" Grid.Row="7" Grid.Column="8"
+                Content="+" Command="{Binding AddCommand}"
+                Style="{DynamicResource SquareButtonStyle}"/>
 
-        <Label Content="Faltas" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="7"               
+        <Label Content="Faltas" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="8" 
                Style="{StaticResource LabelStyle}"/>
-        <DataGrid x:Name="DtgFaltas" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="6" 
+        <DataGrid x:Name="DtgFaltas" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="8" 
                   ItemsSource="{Binding Faltas}"
                   BorderBrush="Black" BorderThickness="1"
                   AutoGenerateColumns="False" IsReadOnly="True"
