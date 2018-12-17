@@ -39,7 +39,14 @@
                   FontSize="12"
                   ItemsSource="{Binding Professores}"
                   Text="{Binding Falta.Professor, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding Falta.Professor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                  SelectedItem="{Binding Falta.Professor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  IsEnabled="{Binding IsEdit}"
+                  SelectedIndex="-1">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionProfChangedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -54,7 +61,8 @@
         <DatePicker x:Name="dpData" Grid.Row="3" Grid.Column="2" 
                     Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
                     FontSize="12" VerticalContentAlignment="Center"
-                    SelectedDate="{Binding Falta.Data, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    SelectedDate="{Binding Falta.Data, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    IsEnabled="{Binding IsEdit}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectedDateChanged">
                     <i:InvokeCommandAction Command="{Binding UpdateDateCommand}"/>
@@ -62,15 +70,22 @@
             </i:Interaction.Triggers>
         </DatePicker>
         <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding DiaDaSemana}" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center" />
+                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                   FontWeight="Bold" Foreground="DarkSlateGray"/>
 
         <Label Content="Disciplinas *" Grid.Row="3" Grid.Column="5"
                Style="{StaticResource LabelStyle}"/>
-        <ComboBox x:Name="lstFaixa" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="3"
+        <ComboBox x:Name="lstDisciplinas" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="3"
                   Foreground="#414141" FontFamily="Verdana" FontWeight="Normal"
                   FontSize="12" VerticalContentAlignment="Center"
-                  ItemsSource="{Binding Disciplinas}"
-                  SelectedItem="{Binding Falta.Disciplina, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                  ItemsSource="{Binding Disciplinas, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Falta.Disciplina, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  IsEnabled="{Binding IsEdit}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionDiscChangedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -89,7 +104,7 @@
                   CanUserResizeColumns="True" CanUserAddRows="False" 
                   CanUserDeleteRows="False" SelectionMode="Extended">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn />
+                <DataGridCheckBoxColumn Binding="{Binding Selected}"/>
                 <DataGridTextColumn Header="Nome" Binding="{Binding Turma.Nome}"/>
                 <DataGridTextColumn Header="Nº Aulas" Binding="{Binding Falta.NFaltas}"/>
                 <DataGridTemplateColumn Header="Profº Substituto">
@@ -99,7 +114,8 @@
                                       ItemsSource="{Binding Professores}"
                                       DisplayMemberPath="Nome"
                                       SelectedValue="{Binding Professor.Nome}"
-                                      SelectedValuePath="Nome">                                
+                                      SelectedValuePath="Nome"
+                                      SelectedItem="{Binding Professor}">
                             </ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -109,7 +125,8 @@
                                       ItemsSource="{Binding Professores}"
                                       DisplayMemberPath="Nome"
                                       SelectedValue="{Binding Professor.Nome}"
-                                      SelectedValuePath="Nome">
+                                      SelectedValuePath="Nome"
+                                      SelectedItem="{Binding Professor}">
                             </ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -131,7 +148,7 @@
                   CanUserDeleteRows="False" SelectionMode="Extended">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Professor" Binding="{Binding Professor.Nome}"/>
-                <DataGridTextColumn Header="Data" Binding="{Binding Data}"/>
+                <DataGridTextColumn Header="Data" Binding="{Binding Data, StringFormat=\{0:dd/MM/yyyy\}}"/>
                 <DataGridTextColumn Header="Disciplina" Binding="{Binding Disciplina.Nome}"/>
                 <DataGridTextColumn Header="Turma" Binding="{Binding Turma.Nome}"/>
                 <DataGridTextColumn Header="Nº de Faltas" Binding="{Binding NFaltas}"/>

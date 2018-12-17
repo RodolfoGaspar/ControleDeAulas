@@ -26,5 +26,13 @@ namespace ControleDeAulas.Model
 
 			return disciplinas;
 		}
+
+		public List<Disciplina> Get(Professor p)
+		{
+			var disciplinas = new List<Disciplina>();
+			disciplinas.AddRange(_disciplina.Get(p));
+
+			return disciplinas;
+		}
 	}
 }

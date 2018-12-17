@@ -76,6 +76,7 @@ namespace ControleDeAulas.DataAccess
 			foreach (DataRow dr in dt.Rows)
 			{
 				var f = new Model.Falta(this);
+
 				f.Professor = new Model.Professor(new Professor(), new Faixa(), new Nivel(), new Situacao(), new Categoria(), new Disciplina());
 				f.Professor.Id = Convert.ToInt32(dr["idProfessor"]);
 				f.Professor.Nome = dr["NomeProfessor"] == DBNull.Value ? string.Empty : Convert.ToString(dr["NomeProfessor"]);

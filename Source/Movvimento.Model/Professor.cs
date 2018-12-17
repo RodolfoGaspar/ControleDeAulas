@@ -47,7 +47,7 @@ namespace ControleDeAulas.Model
 		{
 			var professores = new List<Professor>();
 			professores.AddRange(_professor.Get(categoria));
-			professores.ForEach(p => { p.Disciplinas.AddRange(_disciplina.Get(p.Id)); });
+			professores.ForEach(p => { p.Disciplinas.AddRange(_disciplina.Get(p)); });
 
 			return professores;
 		}
@@ -56,7 +56,7 @@ namespace ControleDeAulas.Model
 		{
 			var professores = new List<Professor>();
 			professores.AddRange(_professor.Get());
-			professores.ForEach(p => { p.Disciplinas.AddRange(_disciplina.Get(p.Id)); });
+			professores.ForEach(p => { p.Disciplinas.AddRange(_disciplina.Get(p)); });
 
 			return professores;
 		}

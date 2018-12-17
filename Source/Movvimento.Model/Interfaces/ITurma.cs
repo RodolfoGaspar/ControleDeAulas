@@ -9,5 +9,6 @@ namespace ControleDeAulas.Model.Interfaces
 	public interface ITurma
 	{
 		List<Turma> Get();
+		List<Turma> Get(Professor p, Disciplina d, DayOfWeek dw);
 	}
 }

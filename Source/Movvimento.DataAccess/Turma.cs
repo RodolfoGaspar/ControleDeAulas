@@ -1,4 +1,5 @@
-﻿using ControleDeAulas.Model.Interfaces;
+﻿using ControleDeAulas.Model;
+using ControleDeAulas.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,7 +25,7 @@ namespace ControleDeAulas.DataAccess
 			{
 				var list = new List<Model.Turma>();
 
-				using (var cmd = new SQLiteCommand("SELECT * FROM Turmas", conn))
+				using (var cmd = new SQLiteCommand(GetTSql().ToString(), conn))
 				{
 					using (var da = new SQLiteDataAdapter(cmd))
 					{ Fill(list, da); }
@@ -36,6 +37,48 @@ namespace ControleDeAulas.DataAccess
 			catch (Exception ex)
 			{ throw ex; }
 			finally { conn.Close(); }
+		}
+
+		public List<Model.Turma> Get(Model.Professor p, Model.Disciplina d, DayOfWeek dw)
+		{
+			try
+			{
+				var list = new List<Model.Turma>();
+
+				using (var cmd = new SQLiteCommand(GetTSql(p, d, dw).ToString(), conn))
+				{
+					using (var da = new SQLiteDataAdapter(cmd))
+					{ Fill(list, da); }
+				}
+
+				return list;
+
+			}
+			catch (Exception ex)
+			{ throw ex; }
+			finally { conn.Close(); }
+		}
+		
+		private static StringBuilder GetTSql()
+		{
+			var sb = new StringBuilder();
+			sb.Append("SELECT		Id, Nome, Descricao");
+			sb.Append("FROM			Turmas");
+			return sb;
+		}
+
+		private object GetTSql(Model.Professor p, Model.Disciplina d, DayOfWeek dw)
+		{
+			var sb = new StringBuilder();
+			sb.Append($"SELECT		TUR.Id, TUR.Nome,");
+			sb.Append($"			TUR.Descricao ");
+			sb.Append($"FROM		Turmas				as	TUR ");
+			sb.Append($"INNER JOIN  Calendário			as	CAL ");
+			sb.Append($"ON			TUR.id				=	CAL.idTurma ");
+			sb.Append($"WHERE		CAL.idprofessor		=	{p.Id} ");
+			sb.Append($"AND			CAL.iddisciplina	=	{d.Id} ");
+			sb.Append($"AND			CAL.diadasemana		=	{(int)dw} ");			
+			return sb;
 		}
 
 		private void Fill(List<Model.Turma> list, SQLiteDataAdapter da)

@@ -39,6 +39,22 @@ namespace ControleDeAulas.DataAccess
 			{ throw ex; }
 			finally { conn.Close(); }
 		}
+		
+		public List<Model.Professor> Get(int categoria)
+		{
+			var list = new List<Model.Professor>();
+
+			StringBuilder sb = GetTSql();
+			sb.Append($"WHERE	IdCategoria = {categoria} ");
+
+			using (var cmd = new SQLiteCommand(sb.ToString(), conn))
+			{
+				using (var da = new SQLiteDataAdapter(cmd))
+				{ Fill(list, da); }
+			}
+
+			return list;
+		}
 
 		private static StringBuilder GetTSql()
 		{
@@ -58,22 +74,6 @@ namespace ControleDeAulas.DataAccess
 			sb.Append("INNER JOIN	Categorias		AS	CAT ");
 			sb.Append("ON			PRF.IdCategoria =	CAT.Id ");
 			return sb;
-		}
-
-		public List<Model.Professor> Get(int categoria)
-		{
-			var list = new List<Model.Professor>();
-
-			StringBuilder sb = GetTSql();
-			sb.Append($"WHERE	IdCategoria = {categoria} ");
-
-			using (var cmd = new SQLiteCommand(sb.ToString(), conn))
-			{
-				using (var da = new SQLiteDataAdapter(cmd))
-				{ Fill(list, da); }
-			}
-
-			return list;
 		}
 
 		private void Fill(List<Model.Professor> list, SQLiteDataAdapter da)

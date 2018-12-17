@@ -24,7 +24,7 @@ namespace ControleDeAulas.Factory
 
 		public Situacao NewSituacao() => new Situacao(new DataAccess.Situacao());
 
-		public TurmaFalta NewTurmaFalta => new TurmaFalta(new DataAccess.Turma(), new DataAccess.Falta(), new DataAccess.Professor());
+		public TurmaFalta NewTurmaFalta() => new TurmaFalta(new DataAccess.Turma(), new DataAccess.Falta(), new DataAccess.Professor());
 
 		public Categoria NewCategoria() => new Categoria(new DataAccess.Categoria());
 

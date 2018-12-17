@@ -182,7 +182,7 @@
 
             <TextBlock x:Name="HeaderWizard" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" 
                        Style="{StaticResource TextBlockWizardStyle}"
-                       Text="{Binding HeaderWizard}"/>
+                       Text="{Binding Base_.HeaderWizard}"/>
             <Frame x:Name="ConteudoWizard" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="8" 
                    NavigationUIVisibility="Hidden" Background="White" >
                 <i:Interaction.Triggers>

@@ -64,5 +64,10 @@ namespace ControleDeAulas.ViewModel
 		{
 			return ((Page)(Navigator.WizardNavigationService.Content)).DataContext;
 		}
+
+		public static dynamic GetCurrentWizardPage()
+		{
+			return ((Page)(Navigator.WizardNavigationService.Content));
+		}
 	}
 }

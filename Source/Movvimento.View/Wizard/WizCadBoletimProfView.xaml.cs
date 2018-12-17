@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
+
 
 namespace ControleDeAulas.View.Wizard
 {
@@ -20,9 +8,16 @@ namespace ControleDeAulas.View.Wizard
 	/// </summary>
 	public partial class WizCadBoletimProfView : Page
 	{
+		public ComboBox Disciplinas { get; set; }
+		public DataGrid Turmas { get; set; }
+
 		public WizCadBoletimProfView()
 		{
 			InitializeComponent();
+			Disciplinas = lstDisciplinas;
+			Turmas = DtgTurmas;
 		}
+
+		
 	}
 }

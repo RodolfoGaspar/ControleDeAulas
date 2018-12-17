@@ -39,7 +39,7 @@ namespace ControleDeAulas.DataAccess
 			finally { conn.Close(); }
 		}
 
-		public List<Model.Disciplina> Get(int id)
+		public List<Model.Disciplina> Get(Model.Professor p)
 		{
 			try
 			{
@@ -52,7 +52,7 @@ namespace ControleDeAulas.DataAccess
 				sb.Append($"ON			DIS.Id			=	PRD.IdDisciplina ");
 				sb.Append($"INNER JOIN	Professores		AS	PRF ");
 				sb.Append($"ON			PRD.IdProf		=	PRF.Id ");
-				sb.Append($"WHERE		PRD.IdProf		=  {id}");
+				sb.Append($"WHERE		PRD.IdProf		=  {p.Id}");
 
 				using (var cmd = new SQLiteCommand(sb.ToString(), conn))
 				{
@@ -66,7 +66,7 @@ namespace ControleDeAulas.DataAccess
 			catch (Exception ex)
 			{ throw ex; }
 			finally { conn.Close(); }
-		}
+		}		
 
 		private void Fill(List<Model.Disciplina> list, SQLiteDataAdapter da)
 		{

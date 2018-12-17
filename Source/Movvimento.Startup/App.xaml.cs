@@ -31,7 +31,7 @@ namespace ControleDeAulas.Startup
 			Navigator.NavigationService = window.MyConteudo.NavigationService;
 			Navigator.WizardNavigationService = window.MyConteudoWizard.NavigationService;
 
-			Navigator.NavigationService.Navigate(new View.HomeView() { DataContext = new HomeViewModel() });
+			Navigator.NavigationService.Navigate(new HomeView() { DataContext = new HomeViewModel() });
 		}
 	}
 }

@@ -22,7 +22,18 @@ namespace ControleDeAulas.Model
 		public Falta(IFalta f)
 		{
 			_falta = f;
-			Data = DateTime.Now.AddDays(-1);
+						
+			SetData();
+		}
+
+		private void SetData()
+		{
+			switch (DateTime.Now.DayOfWeek)
+			{
+				case DayOfWeek.Sunday: Data = DateTime.Now.AddDays(-2); break;
+				case DayOfWeek.Monday: Data = DateTime.Now.AddDays(-3); break;
+				default: Data = DateTime.Now.AddDays(-1); break;
+			}
 		}
 
 		public List<Falta> Get()
