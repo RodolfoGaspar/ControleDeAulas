@@ -35,7 +35,7 @@ namespace ControleDeAulas.ViewModel
 		{
 			if (SelectedItem != null)
 			{
-				Navigator.WizardNavigationService.Navigate(new View.Wizard.WizCadBoletimProfView() { DataContext = new Wizard.WizCadBoletimProfViewModel(SelectedItem, Base_) });
+				Navigator.WizardNavigationService.Navigate(new View.Wizard.WizAltBoletimProfView() { DataContext = new Wizard.WizAltBoletimProfViewModel(SelectedItem, Base_) });
 			}
 		}
 	}

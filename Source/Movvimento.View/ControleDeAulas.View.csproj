@@ -88,6 +88,9 @@
     <Compile Include="TurmasView.xaml.cs">
       <DependentUpon>TurmasView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Wizard\WizAltBoletimProfView.xaml.cs">
+      <DependentUpon>WizAltBoletimProfView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Wizard\WizCadBoletimProfView.xaml.cs">
       <DependentUpon>WizCadBoletimProfView.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
     <Page Include="TurmasView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wizard\WizAltBoletimProfView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Wizard\WizCadBoletimProfView.xaml">
       <SubType>Designer</SubType>

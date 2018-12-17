@@ -132,6 +132,7 @@ namespace ControleDeAulas.ViewModel
 		{
 			Mouse.OverrideCursor = Cursors.Wait;
 			Base_.SetProperties();
+			Navigator.WizardNavigationService.Content = null;
 			Mouse.OverrideCursor = Cursors.Arrow;
 		}
 		/// <summary>

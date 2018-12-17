@@ -53,21 +53,6 @@ namespace ControleDeAulas.ViewModel.Wizard
 
 		public List<Professor> Professores { get; set; }
 
-		private bool isEdit;
-
-		public bool IsEdit
-		{
-			get { return isEdit; }
-			set
-			{
-				if (isEdit != value)
-				{
-					isEdit = value;
-					RaisePropertyChanged("IsEdit");
-				}
-			}
-		}
-
 		private string diaDaSemana;
 
 		public string DiaDaSemana
@@ -97,25 +82,12 @@ namespace ControleDeAulas.ViewModel.Wizard
 				}
 			}
 		}
-				
-		public WizCadBoletimProfViewModel(Falta falta, BaseSingleton baseSingleton)
-		{
-			Falta = falta;
-			Base_ = baseSingleton;
-			IsEdit = false;
-
-			FillCollections();
-			SetProperties();
-
-			Base_.HeaderWizard = "Alteração de Falta de Professor";
-		}
-
+		
 		public WizCadBoletimProfViewModel(BaseSingleton baseSingleton)
 		{
 			Falta = new AppFactory().NewFalta();
 			Base_ = baseSingleton;
-			IsEdit = true;
-
+			
 			FillCollections();
 			SetProperties();
 
@@ -163,7 +135,7 @@ namespace ControleDeAulas.ViewModel.Wizard
 		private void SelectionDiscChanged(object parameter)
 		{
 			Turmas = new ObservableCollection<TurmaFalta>(new AppFactory().NewTurmaFalta().Get(Falta.Professor, Falta.Disciplina, Falta.Data.DayOfWeek));
-			if (GetCurrentWizardPage() != null) GetCurrentWizardPage().Turmas.Items.Refresh();
+			if (GetCurrentWizardPage() != null && GetCurrentWizardPage().Turmas != null) GetCurrentWizardPage().Turmas.Items.Refresh();
 		}
 
 		private void SelectionProfChanged(object parameter)

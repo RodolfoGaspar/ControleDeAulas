@@ -17,7 +17,7 @@ namespace ControleDeAulas.Model
 		public Turma Turma { get; set; }
 		public Falta Falta { get; set; }
 		public Professor Professor { get; set; }
-		public Disciplina Disciplina { get; }
+		public Disciplina Disciplina { get; set; }
 		public List<Professor> Professores { get; set; }
 		public List<Professor> Substitutos { get; private set; }
 
