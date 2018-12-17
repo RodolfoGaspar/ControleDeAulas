@@ -43,28 +43,30 @@
                                   SmallImageSource="{DynamicResource ssl_tls_manager}"/>
                     <RibbonButton x:Name="btnFaixa" Label="Faixas"
                                   Command="{Binding ListFaixaCommand}"
-                                  LargeImageSource="{DynamicResource sort_number_column}"
                                   SmallImageSource="{DynamicResource sort_number_column}"/>
                     <RibbonButton x:Name="btnNivel" Label="Níveis"
                                   Command="{Binding ListNivelCommand}"
-                                  LargeImageSource="{DynamicResource sort_alphabel_column}"
                                   SmallImageSource="{DynamicResource sort_alphabel_column}"/>
                     <RibbonButton x:Name="btnSituacao" Label="Situações"
                                   Command="{Binding ListSituacaoCommand}"
-                                  LargeImageSource="{DynamicResource categories}"
                                   SmallImageSource="{DynamicResource categories}"/>
                     <RibbonButton x:Name="btnCategoria" Label="Categorias"
                                   Command="{Binding ListCategoriaCommand}"
-                                  LargeImageSource="{DynamicResource legend}"
                                   SmallImageSource="{DynamicResource legend}"/>
                     <RibbonButton x:Name="btnMat" Label="Disciplinas"
                                   Command="{Binding ListMateriasCommand}"
-                                  LargeImageSource="{DynamicResource blackboard_drawing}"
                                   SmallImageSource="{DynamicResource blackboard_drawing}"/>
                     <RibbonButton x:Name="btnTurmas" Label="Turmas"
                                   Command="{Binding ListTurmasCommand}"
-                                  LargeImageSource="{DynamicResource users_5}"
-                                  SmallImageSource="{DynamicResource users_5}"/>                    
+                                  SmallImageSource="{DynamicResource users_5}"/>
+                    <RibbonButton x:Name="btnPeriodos" Label="Períodos"
+                                  Command="{Binding ListFaltasCommand}"
+                                  LargeImageSource="{DynamicResource clock_select_remain}"
+                                  SmallImageSource="{DynamicResource clock_select_remain}"/>
+                    <RibbonButton x:Name="btnCalendario" Label="Calendário"
+                                  Command="{Binding ListFaltasCommand}"
+                                  LargeImageSource="{DynamicResource calendar}"
+                                  SmallImageSource="{DynamicResource calendar}"/>
                     <RibbonButton x:Name="btnDiario" Label="Boletim Diário"
                                   Command="{Binding ListFaltasCommand}"
                                   LargeImageSource="{DynamicResource calendar_add}"

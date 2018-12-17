@@ -41,6 +41,7 @@
     <BitmapImage x:Key="sort_number_column" UriSource="Images/sort_number_column.png"/>
     <BitmapImage x:Key="categories" UriSource="Images/categories.png"/>
     <BitmapImage x:Key="legend" UriSource="Images/legend.png"/>
+    <BitmapImage x:Key="calendar" UriSource="Images/calendar.png"/>
 
     <BitmapImage x:Key="Logo_Univesp" UriSource="Images/Logo_Univesp.png"/>
 </ResourceDictionary>
