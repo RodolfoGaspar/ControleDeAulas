@@ -96,7 +96,7 @@ namespace ControleDeAulas.DataAccess
 				p.Nome = Convert.ToString(dr["Nome"]);
 				p.RG = Convert.ToString(dr["RG"]);
 				p.Faixa.Id = Convert.ToInt32(dr["idFaixa"]);
-				p.Faixa.NFaixa = Convert.ToInt32(dr["NFaixa"]);
+				p.Faixa.NFaixa = Convert.ToString(dr["NFaixa"]);
 				p.Faixa.Descricao = dr["DescricaoFaixa"] == DBNull.Value ? string.Empty : Convert.ToString(dr["DescricaoFaixa"]);
 				p.Nivel.Id = Convert.ToInt32(dr["IdNivel"]);
 				p.Nivel.Nome = Convert.ToString(dr["NomeNivel"]);

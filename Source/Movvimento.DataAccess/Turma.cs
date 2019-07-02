@@ -32,7 +32,6 @@ namespace ControleDeAulas.DataAccess
 				}
 
 				return list;
-
 			}
 			catch (Exception ex)
 			{ throw ex; }
@@ -62,7 +61,7 @@ namespace ControleDeAulas.DataAccess
 		private static StringBuilder GetTSql()
 		{
 			var sb = new StringBuilder();
-			sb.Append("SELECT		Id, Nome, Descricao");
+			sb.Append("SELECT		Id, Nome, Descricao ");
 			sb.Append("FROM			Turmas");
 			return sb;
 		}

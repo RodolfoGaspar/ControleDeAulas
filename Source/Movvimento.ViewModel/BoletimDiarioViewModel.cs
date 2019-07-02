@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControleDeAulas.ViewModel
 {
-	public class BoletimDiarioViewModel: BaseViewModel
+	public class BoletimDiarioViewModel : BaseViewModel
 	{
 		public ObservableCollection<Falta> Faltas { get; private set; }
 		public Falta Falta { get; set; }

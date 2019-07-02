@@ -12,7 +12,7 @@ namespace ControleDeAulas.Model
 		private IFaixa _faixa;
 
 		public int Id { get; set; }
-		public int NFaixa { get; set; }
+		public string NFaixa { get; set; }
 		public string Descricao { get; set; }
 
 		public Faixa(IFaixa f)

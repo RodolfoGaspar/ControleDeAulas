@@ -47,6 +47,7 @@
     <Compile Include="BaseSingleton.cs" />
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="BoletimDiarioViewModel.cs" />
+    <Compile Include="CalendarioViewModel.cs" />
     <Compile Include="CategoriasViewModel.cs" />
     <Compile Include="ExtratoAulasViewModel.cs" />
     <Compile Include="FaixasViewModel.cs" />

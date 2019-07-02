@@ -15,18 +15,14 @@ using System.Windows.Shapes;
 
 namespace ControleDeAulas.View
 {
-    /// <summary>
-    /// Interação lógica para BoletimDiarioView.xam
-    /// </summary>
-    public partial class BoletimDiarioView : Page
-    {
-		public ItemCollection Faltas { get; set; }
-
-		public BoletimDiarioView()
-        {
-            InitializeComponent();
-			Faltas = DataGridFaltas.Items;
-
-		}		
+	/// <summary>
+	/// Interação lógica para CalendarioView.xam
+	/// </summary>
+	public partial class CalendarioView : Page
+	{
+		public CalendarioView()
+		{
+			InitializeComponent();
+		}
 	}
 }

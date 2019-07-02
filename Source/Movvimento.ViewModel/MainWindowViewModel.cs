@@ -40,6 +40,7 @@ namespace ControleDeAulas.ViewModel
 		public RelayCommand ListCategoriaCommand { get; set; }
 		public RelayCommand ListMateriasCommand { get; set; }
 		public RelayCommand ListTurmasCommand { get; set; }
+		public RelayCommand ListCalendarioCommand { get; set; }
 		public RelayCommand ListFaltasCommand { get; set; }
 
 		public RelayCommand NovoCommand { get; set; }
@@ -63,6 +64,7 @@ namespace ControleDeAulas.ViewModel
 			ListCategoriaCommand = new RelayCommand(ListCategoria);
 			ListMateriasCommand = new RelayCommand(ListMaterias);
 			ListTurmasCommand = new RelayCommand(ListTurmas);
+			ListCalendarioCommand = new RelayCommand(ListCalendario);
 			ListFaltasCommand = new RelayCommand(ListFaltas);
 
 			NovoCommand = new RelayCommand(Add);
@@ -90,6 +92,8 @@ namespace ControleDeAulas.ViewModel
 		private void ListMaterias(object parameter) => Navigator.NavigationService.Navigate(new MateriasView() { DataContext = new DisciplinasViewModel() });
 
 		private void ListTurmas(object parameters) => Navigator.NavigationService.Navigate(new TurmasView() { DataContext = new TurmasViewModel() });
+
+		private void ListCalendario(object parameters) => Navigator.NavigationService.Navigate(new CalendarioView() { DataContext = new CalendarioViewModel() });
 
 		private void ListFaltas(object parameters) => Navigator.NavigationService.Navigate(new BoletimDiarioView() { DataContext = new BoletimDiarioViewModel(Base_) });
 
@@ -146,6 +150,9 @@ namespace ControleDeAulas.ViewModel
 			switch (wizard)
 			{
 				case ("ControleDeAulas.View.Wizard.WizCadProfessorView"):
+					GetCurrentWizardPageDataContext().Save();
+					break;
+				case ("ControleDeAulas.View.Wizard.WizCadBoletimProfView"):
 					GetCurrentWizardPageDataContext().Save();
 					break;
 				default: break;

@@ -55,7 +55,7 @@ namespace ControleDeAulas.DataAccess
 				var n = new Model.Faixa(this)
 				{
 					Id = Convert.ToInt32(dr["id"]),
-					NFaixa = Convert.ToInt32(dr["NFaixa"]),
+					NFaixa = Convert.ToString(dr["NFaixa"]),
 					Descricao = dr["Descricao"] == DBNull.Value ? string.Empty : Convert.ToString(dr["Descricao"])
 				};
 

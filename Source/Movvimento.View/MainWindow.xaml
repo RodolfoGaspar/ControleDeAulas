@@ -64,7 +64,7 @@
                                   LargeImageSource="{DynamicResource clock_select_remain}"
                                   SmallImageSource="{DynamicResource clock_select_remain}"/>
                     <RibbonButton x:Name="btnCalendario" Label="Calendário"
-                                  Command="{Binding ListFaltasCommand}"
+                                  Command="{Binding ListCalendarioCommand}"
                                   LargeImageSource="{DynamicResource calendar}"
                                   SmallImageSource="{DynamicResource calendar}"/>
                     <RibbonButton x:Name="btnDiario" Label="Boletim Diário"

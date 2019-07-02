@@ -38,5 +38,10 @@ namespace ControleDeAulas.Model
 
 		public List<Falta> Get()
 		{ return _falta.Get(); }
+
+		public bool Add(List<Falta> faltas)
+		{
+			return _falta.Add(faltas);
+		}
 	}
 }

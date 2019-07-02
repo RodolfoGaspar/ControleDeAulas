@@ -60,6 +60,11 @@ namespace ControleDeAulas.ViewModel
 			return ((Page)(Navigator.NavigationService.Content)).DataContext;
 		}
 
+		public static dynamic GetCurrentPageData()
+		{
+			return ((Page)(Navigator.NavigationService.Content));
+		}
+
 		public static dynamic GetCurrentWizardPageDataContext()
 		{
 			return ((Page)(Navigator.WizardNavigationService.Content)).DataContext;

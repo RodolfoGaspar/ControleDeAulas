@@ -1,6 +1,7 @@
 ﻿using ControleDeAulas.Factory;
 using ControleDeAulas.Helpers;
 using ControleDeAulas.Model;
+using ControleDeAulas.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace ControleDeAulas.ViewModel.Wizard
 {
@@ -158,6 +160,21 @@ namespace ControleDeAulas.ViewModel.Wizard
 			Professores.AddRange(new AppFactory().NewProfessor().Get(1));
 		}
 
+		public void Save()
+		{
+			Mouse.OverrideCursor = Cursors.Wait;
+
+			if (Falta.Add(Faltas.ToList()))
+			{ }
+
+			Faltas.ToList().ForEach(f=> { ((BoletimDiarioViewModel)GetCurrentPageDataContext()).Faltas.Add(f); });			
+			((BoletimDiarioView)GetCurrentPageData()).Faltas.Refresh();
+
+			Base_.SetProperties();
+			Navigator.WizardNavigationService.Content = null;
+			Mouse.OverrideCursor = Cursors.Arrow;
+			
+		}
 
 	}
 }

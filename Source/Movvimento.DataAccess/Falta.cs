@@ -2,6 +2,7 @@
 using ControleDeAulas.Model.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
@@ -17,6 +18,51 @@ namespace ControleDeAulas.DataAccess
 		public Falta()
 		{
 			Conexao(out conn);
+		}
+
+		public bool Add(List<Model.Falta> faltas)
+		{
+			try
+			{
+				faltas.ForEach(f =>
+				{
+					var sb = new StringBuilder();
+					sb.Append($"	insert into BoletimDeFaltas (idprofessor, data, IdDisciplina, idturma, nfaltas, idprofsubs, naulassubs)");
+					sb.Append($"	values(");
+					if (f.Professor != null)
+					{ sb.Append($"			{f.Professor.Id}, "); }
+					else
+					{ sb.Append($"			{DBNull.Value}, "); }
+					sb.Append($"		   '{f.Data.ToShortDateString()}', ");
+					if (f.Disciplina != null)
+					{ sb.Append($"			{f.Disciplina.Id}, "); }
+					else
+					{ sb.Append($"			{DBNull.Value}, "); }
+					if (f.Turma != null)
+					{ sb.Append($"			{f.Turma.Id}, "); }
+					else
+					{ sb.Append($"			{DBNull.Value}, "); }
+					sb.Append($"			{f.NFaltas}, ");
+					if (f.ProfSubs != null)
+					{ sb.Append($"			{f.ProfSubs.Id}, "); }
+					else
+					{ sb.Append($"			{DBNull.Value}, "); }
+					sb.Append($"			{f.NAulasSubs})");
+
+					using (var cmd = new SQLiteCommand(sb.ToString(), conn))
+					{
+						if (conn.State == ConnectionState.Closed) conn.Open();
+						cmd.ExecuteNonQuery();						
+					}					
+				});
+				return true;
+			}
+			catch (Exception ex)
+			{
+				return false;
+				throw ex;				
+			}
+			finally { conn.Close(); }
 		}
 
 		public List<Model.Falta> Get()
